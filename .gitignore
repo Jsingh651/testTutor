@@ -1,3 +1,3 @@
-/.env
-/Pipfile
-/Pipfile.lo../flask_app/config
+.env
+Pipfile
+Pipfile.lock
