@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/registrations.css">
+    </script>
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="main_container">
+                <div class="left_contianer">
+                    <img class="header__image_logo logo2" src="../static/assets/logo.png" onclick="redirectToLanding()" alt="">
+                    <!-- <h1 class="form_title_login">Sign Up</h1> -->
+                    <form action="/register" method="post">
+                        <h3 class="right_container__title">Create your free Account!</h3>
+    
+                        {% with messages = get_flashed_messages(category_filter="first_name_error") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="first_name-error errors">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <input name="first_name" class="first_name" type="text" autocomplete="off" placeholder="First Name"
+                            value="{{session['first_name']}}">
+    
+    
+                        {% with messages = get_flashed_messages(category_filter="last_name_error") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="last_name-error errors ">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <input name="last_name" class="last_name" type="text" placeholder=" Last Name "
+                            value="{{session['last_name']}}">
+    
+                        {% with messages = get_flashed_messages(category_filter="email_error") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="email_error errors">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        {% with messages = get_flashed_messages(category_filter="exsist") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="email_error errors">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <input name="email" class="email" type="text" placeholder="Email" value="{{session['email']}}">
+    
+                        {% with messages = get_flashed_messages(category_filter="password_error") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="password_error errors">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="password-field">
+                            <input name="password" class="password" type="password" placeholder="Password" id="password">
+                            <div class="passwordBtn">
+                                <i class="fa fa-eye"></i>
+                                <i class="fa fa-eye-slash"></i>
+                            </div>
+                        </div>
+
+    
+                        {% with messages = get_flashed_messages(category_filter="accepted_error") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="password_error errors">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="right_container__accepted">
+                            <div class="right_container__accepted__text">
+                                <label class="accepted_terms">By Signing up you agree to the our <a class="txtbrow"
+                                        href="/privacy/policy">Terms of services</a> and <a class="txtbrow"
+                                        href="/privacy/policy">Privacy policy.</a>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="form_submit_button">Create Account</button>
+                        <a class="right_container__login__link" href="/login">Already have an Zync Account? <span class="login_span">Log In</span></a>
+                    </form>
+                </div>
+                <div class="right_container">
+                    <h1 class="right_cont_title">Experience coding joy and learn with fun!</h1>
+                    <img class="right_cont_image" src="../static/assets/Studying-rafiki.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            const passwordInput = document.getElementById('password');
+            const passwordBtn = document.querySelector('.passwordBtn');
+            const showPasswordIcon = passwordBtn.querySelector('.fa-eye-slash');
+            const hidePasswordIcon = passwordBtn.querySelector('.fa-eye');
+            const passwordState = localStorage.getItem('passwordState');
+    
+            if (passwordState === 'hidden') {
+                passwordInput.type = 'password';
+                showPasswordIcon.style.display = 'block';
+                hidePasswordIcon.style.display = 'none';
+                showPasswordIcon.classList.add('active');
+            } else {
+                passwordInput.type = 'text';
+                showPasswordIcon.style.display = 'none';
+                hidePasswordIcon.style.display = 'block';
+                hidePasswordIcon.classList.add('active');
+            }
+    
+            passwordBtn.addEventListener('click', function () {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    showPasswordIcon.style.display = 'none';
+                    hidePasswordIcon.style.display = 'block';
+                    showPasswordIcon.classList.remove('active');
+                    hidePasswordIcon.classList.add('active');
+                    localStorage.setItem('passwordState', 'visible');
+                } else {
+                    passwordInput.type = 'password';
+                    showPasswordIcon.style.display = 'block';
+                    hidePasswordIcon.style.display = 'none';
+                    hidePasswordIcon.classList.remove('active');
+                    showPasswordIcon.classList.add('active');
+                    localStorage.setItem('passwordState', 'hidden');
+                }
+            });
+            function redirectToLanding() {
+            window.location.href = "/";
+        }
+        </script>
+</body>
+
+</html>
+

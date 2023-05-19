@@ -19,7 +19,7 @@ def redirectroute():
 
 @app.route('/login')
 def newuser():
-    return render_template('Login.html')
+    return render_template('login.html')
 
 @app.route("/register")
 def newuseredit():

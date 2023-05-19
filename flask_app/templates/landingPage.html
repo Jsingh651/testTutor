@@ -9,6 +9,7 @@
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/e53bf076c4.js" crossorigin="anonymous"></script>
     <script src="../static/js/landingPage.js" defer></script>
+
     <title>Frontend tutor</title>
 </head>
 
@@ -23,8 +24,9 @@
                     </div>
                 </div>
                 <div class="header__right_container">
-                    <a class="header__login_link" href="">Login</a>
-                    <button class="header__signup_button">Signup</button>
+                    <a class="header__login_link" href="/login">Login</a>
+                    <button class="header__signup_button" onclick="redirectToRegister()">Signup</button>
+
                 </div>
             </div>
         </nav>
@@ -37,23 +39,24 @@
         <section class="section__one">
             <div class="section__one_row">
                 <div class="section__one_left_container">
-                    <h1 class="section__one_title">Learn to code and and start earning 6 figures in under <span
-                            class="colored_text"> 8 weeks!</span></h1>
+                    <h1 class="section__one_title">Fast-track Your Coding Journey to 6-Figures in Under <span
+                            class="colored_text"> 8 Weeks!</span></h1>
                     <div class="section__one_left_container_list">
-                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Learn <span
-                                class="colored_text bold">coding</span> with no prior experience</li>
-                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Get real time
-                            <span class="colored_text bold">help</span> in our discord
+                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Unlock the world
+                            of<span class="colored_text bold">coding</span> with no prior experience</li>
+                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Benefit from live
+                            help in our Discord
+                            <span class="colored_text bold">community.</span>
                         </li>
-                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Build <span
-                                class="colored_text bold">real-life</span> web applications</li>
-                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Follow a roadmap
+                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Put your skills
+                            to the test by building <span class="colored_text bold">real-life</span> apps.</li>
+                        <li class="section__one_left_container_list_item"><i class="fas fa-check"></i> Follow a
+                            structured roadmap
                             to <span class="colored_text bold">success</span></li>
                     </div>
 
-
                     <div class="divider">
-                        <button class="section__one_button">Get started</button>
+                        <button class="section__one_button" onclick="redirectToRegister()">Get started</button>
                         <a href="" class="section__one_disclaimer">(No credit card required)</a>
                     </div>
 
@@ -72,274 +75,105 @@
                 <img src="../static/assets/tesla.png" alt="" class="section__one_logo">
             </div>
         </section>
-        <section class="section__two">
-            <div class="section__two_row">
-                <h1 class="section__two_title">Crafted for students to <span class="colored_text bold">succeed.</span>
-                </h1>
-
-                <div class="section__two_main">
-                        <div class="_w-cloneable">
-                            <div class="c-cards-list">
-                                <div class="_w-cards-list">
-                                    <div class="c-card _21">
-                                        <div class="_w-card">
-
-                                            <h3 class="card-title">#1 Fresh Start</h3>
-                                            <div class="c-card-details">
-                                                <p class="card-details">
-                                                    You’re not alone in feeling stuck in a career that’s unfulfilling.
-                                                    It’s time to make a change and start a new chapter.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-card _2">
-                                        <div class="_w-card">
-
-                                            <h3 class="card-title">#2 structured steps</h3>
-                                            <div class="c-card-details">
-                                                <p class="card-details">
-                                                    Frontend Tutor gives you a step-by-step approach to starting from
-                                                    scratch ensuring you stay engaged and motivated throughout the
-                                                    process.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-card _3">
-                                        <div class="_w-card">
-
-                                            <h3 class="card-title">#3 Theory & Practise </h3>
-                                            <div class="_2rem-divider"></div>
-                                            <div class="c-card-details">
-                                                <p class="card-details"> We blend structured learning modules with
-                                                    hands-on practical exercises, to ensure our students gain valuable,
-                                                    applicable skills that can be immediately put into action.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-card _4">
-                                        <div class="_w-card">
-                                            <div class="c-card-subtitle">
-                                                <h3 class="card-title">#4 We keep you accountable</h3>
-                                                <div class="_2rem-divider"></div>
-                                            </div>
-                                            <div class="c-card-details">
-                                                <p class="card-details"> As a student, you’re joining the Frontend Tutor
-                                                    community who will keep you accountable and ensure you stay focused
-                                                    on your goals.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-card _5">
-                                        <div class="_w-card">
-                                            <div class="c-card-subtitle">
-                                                <h3 class="card-title"></h3>
-                                                <div class="_2rem-divider"></div>
-                                            </div>
-                                            <div class="c-card-details">
-                                                <p class="card-details">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <section class="section__one_five">
+            <div class="section__one_five_row">
+                <div class="section__one_five_main">
+                    <div class="num_of_students">
+                        <h1 class="number_of">7,912</h1>
+                        <h1 class="number_of_text">Students enrolled</h1>
+                    </div>
+                    <div class="average_ratings">
+                        <div class="stars_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
+                        <h1 class="number_of_avg_rating">4.8 Average rating</h1>
+                    </div>
+                    <div class="average_salary">
+                        <h1 class="number_of_avg_salary">$108,408<span class="span_star">*</span></h1>
+                        <h1 class="salary_text">Average grad salary</h1>
                     </div>
                 </div>
             </div>
         </section>
+        <section class="section__two">
+            <div class="section__two_row">
+                <h1 class="section__two_title ttl">Learn the most valuable skills to <span
+                        class="colored_text bold">succeed.</span>
+                </h1>
+                <div class="section_sub_line sepcialline"></div>
 
-        <section class="section__three">
-            <div class="section__three_row">
-                <div class="section__three_main_container">
-                    <div class="section__three_content_1">
-                        <div class="section__three_content_left">
-                            <h1 class="section__three_content_title">What you will learn in the next 8 weeks. </h1>
-                            </h1>
-                            <p class="section__three_content1_text">
-                                In your journey towards becoming a front-end developer, you'll learn about HTML, CSS,
-                                and JavaScript. These three building blocks hold the power to transform your creations
-                                into dynamic and visual applications.</p>
-                        </div>
-                        <div class="section__three_content_right">
-                            <div class="div1">
-                                <img src="../static/assets/htmlLogo.png" alt=""
-                                    class="section__three_content_right_logo">
-                                <img src="../static/assets/cssLogo.png" alt=""
-                                    class="section__three_content_right_logo _1">
-                            </div>
-                            <div class="div2">
-                                <img src="../static/assets/javascriptLogo.png" alt=""
-                                    class="section__three_content_right_logo">
-                                <img src="../static/assets/reactLogo.png" alt=""
-                                    class="section__three_content_right_logo _1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section__three_weeks">
+                <div class="section__two_main">
+                    <div class="_w-cloneable">
+                        <div class="c-cards-list">
+                            <div class="_w-cards-list">
+                                <div class="c-card _21">
+                                    <div class="_w-card">
 
-                        <div class="section__three_week1">
-                            <details>
-                                <summary id="leftWeek1"> <span class="week_num">#0</span> Onboarding</summary>
-                                <p class="collapsed_p">Achieve the status of a top 1% engineer in record time by
-                                    overcoming procrastination and lack of motivation. Learn how to maximise your coding
-                                    efficiency for optimal results.</p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek2"> <span class="week_num">#1</span> Master HTML & CSS</summary>
-                                <p class="collapsed_p">Gain a strong foundation in web development by mastering HTML and
-                                    CSS, the building blocks of the web. Learn to create visually appealing and
-                                    responsive websites from scratch with hands-on projects and practical exercises.
-                                </p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek3"> <span class="week_num">#2</span> Build Four Impressive Projects</summary>
-                                <p class="collapsed_p">Develop a diverse portfolio by building four unique and
-                                    impressive web projects. Showcase your newfound skills and creativity while
-                                    demonstrating your ability to work with various technologies and tools.</p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek4"> <span class="week_num">#3</span>Start Making $250 per Website</summary>
-                                <p class="collapsed_p"> Leverage your skills and expertise to create professional
-                                    websites for clients, and start earning $250 or more per project. Build a reputation
-                                    for high-quality work and expand your client base.</p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek5"> <span class="week_num">#4</span> Practise & Learn Javascript</summary>
-                                <p class="collapsed_p">Dive into the world of JavaScript, the programming language that
-                                    powers the web. Learn the fundamentals and best practices, and work on practical
-                                    projects to reinforce your understanding of this versatile language.</p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek6"> <span class="week_num">#5</span> Learn React</summary>
-                                <p class="collapsed_p">Master React, a powerful JavaScript library for building user
-                                    interfaces. Gain an in-depth understanding of components, state management, and
-                                    React hooks, and learn to create modern, scalable web applications.</p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek7"> <span class="week_num">#6</span> Specialize in Frontend</summary>
-                                <p class="collapsed_p">Become a frontend specialist by learning advanced techniques and
-                                    tools for creating engaging, interactive, and high-performance web applications.
-                                    Hone your skills in responsive design, performance optimization, and accessibility.
-                                </p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek8"> <span class="week_num">#7</span> Practice Interviews</summary>
-                                <p class="collapsed_p">Prepare for your job search by participating in mock interviews
-                                    and practicing common technical questions. Learn how to present your skills and
-                                    experience effectively, and develop strategies to ace any interview.</p>
-                            </details>
-                            <details>
-                                <summary id="leftWeek9"> <span class="week_num">#8</span> Land a Job</summary>
-                                <p class="collapsed_p">Put your skills to work by landing a rewarding job in the web
-                                    development industry. Receive guidance on resume-building, networking, and job
-                                    search strategies to help you secure the ideal position and jumpstart your career.
-                                </p>
-                            </details>
-
-                        </div>
-                        <div class="section__three_week2">
-                            <div class="border">
-                                <div class="section__three_week2Box">
-                                    <h1 class="section__three_week2Box_title"><i class="fas fa-play"></i>Start learning</h1>
-                                    <h1 class="dashboard_title"><i class="fas fa-list"></i>Dashboard</h1>
-                                    <h1 class="roadmap_title">Coding Roadmap</h1>
-                                    <div class="roadmap_container">
-                                        <details id="rightWeek1" class="details_tag">
-                                            <summary class="summary_tag"> <i class="fa-regular fa-star brandL"></i> Start here</summary>
-                                            <h3 class="week_summary">Introduction</h3>
-                                            <h1 class="week_item">Course Introduction</h1>
-                                            <h1 class="week_item">Mindset and motivation</h1>
-                                            <h3 class="week_summary">Setup</h3>
-                                            <h1 class="week_item">Enviorment Setup</h1>
-                                        
-                                        </details>
-                                        <details id="rightWeek2" class="details_tag">
-                                            <summary class="summary_tag"><i class="fa-brands fa-html5 brandL" ></i>  Week 1</summary>
-                                            <h3 class="week_summary">HTML</h3>
-                                            <h1 class="week_item">Crash Course</h1>
-                                            <h1 class="week_item">Industry Convention</h1>
-                                            <h3 class="week_summary">CSS</h3>
-                                            <h1 class="week_item">Crash Course</h1>
-                                            <h1 class="week_item">Flexbox Layout</h1>
-                                            <h1 class="week_item">Industry Convention</h1>
-                                        </details>
-                                        <details id="rightWeek3" class="details_tag">
-                                            <summary class="summary_tag"> <i class="fa-brands fa-css3-alt brandL" ></i> Week 2</summary>
-                                            <h3 class="week_summary">Mini Project</h3>
-                                            <h1 class="week_item">Github setup</h1>
-                                            <h1 class="week_item">Build your first website</h1>
-                                            <h1 class="week_item">Style you first website</h1>
-                                            <h1 class="week_item">Responsiveness</h1>
-                                            <h3 class="week_summary">Projects</h3>
-                                            <h1 class="week_item">E-portfolio</h1>
-                                            <h1 class="week_item">E-Commerce</h1>
-                                            <h1 class="week_item">Final Project</h1>
-                                        </details>
-                                        <details id="rightWeek4" class="details_tag">
-                                            <summary class="summary_tag"><i class="fa-solid fa-gear brandL"></i> Week 3</summary>
-                                            <h3 class="week_summary">Deployment</h3>
-                                            <h1 class="week_item">Domain configuration</h1>
-                                            <h1 class="week_item">Vercel deployment</h1>
-                                            <h3 class="week_summary">Bonus</h3>
-                                            <h1 class="week_item">Make money coding</h1>
-                                            
-                                        </details>
-                                        <details id="rightWeek5"class="details_tag">
-                                            <summary class="summary_tag"><i class="fa-brands fa-js brandL"></i> Week 4</summary>
-                                            <h3 class="week_summary">Javascript</h3>
-                                            <h1 class="week_item">How to win</h1>
-                                            <h1 class="week_item">Crash Course</h1>
-                                            <h3 class="week_item">Add JS to your site</h3>
-                                        </details>
-                                        <details id="rightWeek6" class="details_tag">
-                                            <summary class="summary_tag"><i class="fa-brands fa-react brandL"></i> Week 5</summary>
-                                            <h3 class="week_summary">React</h3>
-                                            <h1 class="week_item">Crash Course</h1>
-                                            <h1 class="week_item">Components</h1>
-                                            <h1 class="week_item">Props</h1>
-                                            <h3 class="week_summary">Projects</h3>
-                                            <h1 class="week_item">Tabs</h1>
-                                            <h1 class="week_item">To do list</h1>
-                                            <h1 class="week_item">E-commerce store</h1>
-                                        </details>
-                                        <details  id="rightWeek7" class="details_tag">
-                                            <summary class="summary_tag"> <i class="fa-solid fa-code brandL"></i> Week 6</summary>
-                                            <h3 class="week_summary">Intermediate React</h3>
-                                            <h1 class="week_item">React Routing</h1>
-                                            <h1 class="week_item">useEffects</h1>
-                                            <h3 class="week_summary">API's</h3>
-                                            <h1 class="week_item">API Crash course</h1>
-                                            <h1 class="week_item">Pokemon API</h1>
-                                            
-                                        </details>
-                                        <details id="rightWeek8"class="details_tag">
-                                            <summary class="summary_tag"> <i class="fa-regular fa-keyboard brandL"></i> Week 7</summary>
-                                            <h3 class="week_summary">First round</h3>
-                                            <h1 class="week_item">Js trivia</h1>
-                                            <h1 class="week_item">CSS trivia</h1>
-                                            <h3 class="week_summary">Second round</h3>
-                                            <h1 class="week_item">Algo Intro</h1>
-                                            <h1 class="week_item">Resources</h1>
-                                            <h1 class="week_item">Stringify</h1>
-                                            <h1 class="week_item">Palindrome</h1>
-                                            <h1 class="week_item">Reverse string</h1>
-                                            <h1 class="week_item">Anagram</h1>
-                                            
-                                        </details>
-                                        <details id="rightWeek9" class="details_tag">
-                                            <summary class="summary_tag"> <i class="fas fa-dollar-sign brandL"></i> Week 8</summary>
-                                            <h3 class="week_summary">Job search</h3>
-                                            <h1 class="week_item">Resume</h1>
-                                            <h1 class="week_item">LinkedIn</h1>
-                                            <h1 class="week_item">How to apply</h1>
-                                        </details>
+                                        <h3 class="card-title">#1 Fresh Start</h3>
+                                        <div class="c-card-details">
+                                            <p class="card-details">
+                                                Feeling trapped in an unsatisfying career is something many people
+                                                experience. Now is the time to make a change and begin a new journey.
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="roadmap_completed_num">
-                                        <h1 class="roadmap_complted_title">Completed: <span class="lighter">0%</span></h1>
-                                        <h1 class="roadmap_value_title">Value: <span class="lighter">$0</span></h1>
+                                </div>
+                                <div class="c-card _2">
+                                    <div class="_w-card">
+
+                                        <h3 class="card-title">#2 Step-by-Step Approach</h3>
+                                        <div class="c-card-details">
+                                            <p class="card-details">
+
+                                                Frontend Tutor offers a designed step-by-step approach that
+                                                takes you from scratch to pro. Our curriculum ensures that you
+                                                remain engaged and motivated throughout the learning process.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-card _3">
+                                    <div class="_w-card">
+
+                                        <h3 class="card-title">#3 Theory and Practice </h3>
+                                        <div class="_2rem-divider"></div>
+                                        <div class="c-card-details">
+                                            <p class="card-details">
+
+                                                At Frontend Tutor, we believe in providing a balanced approach to
+                                                learning. This unique blend ensures that our
+                                                students not only acquire theoretical knowledge but also gain valuable
+                                                skills.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-card _4">
+                                    <div class="_w-card">
+                                        <div class="c-card-subtitle">
+                                            <h3 class="card-title">#4 Stay Accountable with Us</h3>
+                                            <div class="_2rem-divider"></div>
+                                        </div>
+                                        <div class="c-card-details">
+                                            <p class="card-details">
+                                                Join the Frontend Tutor community as a student and experience the power
+                                                of accountability. Our community will support and motivate you, ensuring
+                                                that you stay focused on your goals throughout your learning journey.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-card _5">
+                                    <div class="_w-card">
+                                        <div class="c-card-subtitle">
+                                            <h3 class="card-title"></h3>
+                                            <div class="_2rem-divider"></div>
+                                        </div>
+                                        <div class="c-card-details">
+                                            <p class="card-details">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -347,13 +181,432 @@
                     </div>
                 </div>
             </div>
-
     </div>
     </section>
+
+    <section class="section__three">
+        <div class="section__three_row">
+            <div class="section__three_main_container">
+                <div class="section__three_content_1">
+                    <div class="section__three_content_left">
+                        <h1 class="section__three_content_title ttl">What the next 8 weeks look like? </h1>
+                        </h1>
+                        <div class="section_sub_line"></div>
+
+                        <p class="section__three_content1_text">
+                            Embark on your journey to become a front-end developer and unlock the potential of HTML,
+                            CSS, and JavaScript. These fundamental pillars will empower you to transform your designs
+                            into captivating and interactive applications.</p>
+                    </div>
+                    <div class="section__three_content_right">
+                        <div class="div1">
+                            <img src="../static/assets/htmlLogo.png" alt="" class="section__three_content_right_logo">
+                            <img src="../static/assets/cssLogo.png" alt="" class="section__three_content_right_logo _1">
+                        </div>
+                        <div class="div2">
+                            <img src="../static/assets/javascriptLogo.png" alt=""
+                                class="section__three_content_right_logo">
+                            <img src="../static/assets/reactLogo.png" alt=""
+                                class="section__three_content_right_logo _1 _spec">
+                        </div>
+                    </div>
+                </div>
+                <div class="section__three_weeks">
+
+                    <div class="section__three_week1">
+                        <details>
+                            <summary id="leftWeek1"> <span class="week_num">#0</span> Seamless Onboarding
+                            </summary>
+                            <p class="collapsed_p">Achieve the status of a top 1% engineer in record time by
+                                overcoming procrastination and lack of motivation. Learn how to maximise your coding
+                                efficiency for optimal results.</p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek2"> <span class="week_num">#1</span> Master HTML & CSS with Ease
+                            </summary>
+                            <p class="collapsed_p">Gain a strong foundation in web development by mastering HTML and
+                                CSS, the building blocks of the web. Learn to create visually appealing and
+                                responsive websites from scratch with hands-on projects and practical exercises.
+                            </p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek3"> <span class="week_num">#2</span> Create Four Remarkable Projects
+
+                            </summary>
+                            <p class="collapsed_p">Develop a diverse portfolio by building four unique and
+                                impressive web projects. Showcase your newfound skills and creativity while
+                                demonstrating your ability to work with various technologies and tools.</p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek4"> <span class="week_num">#3</span>Deploying your website online
+                            </summary>
+                            <p class="collapsed_p"> Leverage your skills and expertise to create professional
+                                websites and deploy them online for the world to see.</p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek5"> <span class="week_num">#4</span> Sharpen Your JavaScript Skills
+
+                            </summary>
+                            <p class="collapsed_p">Dive into the world of JavaScript, the programming language that
+                                powers the web. Learn the fundamentals and best practices, and work on practical
+                                projects to reinforce your understanding of this versatile language.</p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek6"> <span class="week_num">#5</span> Unlock the Power of React
+                            </summary>
+                            <p class="collapsed_p">Master React, a powerful JavaScript library for building user
+                                interfaces. Gain an in-depth understanding of components, state management, and
+                                React hooks, and learn to create modern, scalable web applications.</p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek7"> <span class="week_num">#6</span> Become a Frontend Specialist
+                            </summary>
+                            <p class="collapsed_p">Become a frontend specialist by learning advanced techniques and
+                                tools for creating engaging, interactive, and high-performance web applications.
+                                Hone your skills in responsive design, performance optimization, and accessibility.
+                            </p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek8"> <span class="week_num">#7</span> Ace Your Interview Practice
+                            </summary>
+                            <p class="collapsed_p">Prepare for your job search by participating in mock interviews
+                                and practicing common technical questions. Learn how to present your skills and
+                                experience effectively, and develop strategies to ace any interview.</p>
+                        </details>
+                        <details>
+                            <summary id="leftWeek9"> <span class="week_num">#8</span> Secure your dream job</summary>
+                            <p class="collapsed_p">Put your skills to work by landing a rewarding job in the web
+                                development industry. Receive guidance on resume-building, networking, and job
+                                search strategies to help you secure the ideal position and jumpstart your career.
+                            </p>
+                        </details>
+
+                    </div>
+                    <div class="section__three_week2">
+                        <div class="border">
+                            <div class="section__three_week2Box">
+                                <h1 class="section__three_week2Box_title"><i class="fas fa-play"></i>Start learning</h1>
+                                <h1 class="dashboard_title"><i class="fas fa-list"></i>Dashboard</h1>
+                                <h1 class="roadmap_title">Coding Roadmap</h1>
+                                <div class="roadmap_container">
+                                    <details id="rightWeek1" class="details_tag">
+                                        <summary class="summary_tag"> <i class="fa-regular fa-star brandL"></i> Start
+                                            here</summary>
+                                        <h3 class="week_summary">Introduction</h3>
+                                        <h1 class="week_item">Course Introduction</h1>
+                                        <h1 class="week_item">Mindset and motivation</h1>
+                                        <h3 class="week_summary">Setup</h3>
+                                        <h1 class="week_item">Enviorment Setup</h1>
+
+                                    </details>
+                                    <details id="rightWeek2" class="details_tag">
+                                        <summary class="summary_tag"><i class="fa-brands fa-html5 brandL"></i> Week 1
+                                        </summary>
+                                        <h3 class="week_summary">HTML</h3>
+                                        <h1 class="week_item">Crash Course</h1>
+                                        <h1 class="week_item">Industry Convention</h1>
+                                        <h3 class="week_summary">CSS</h3>
+                                        <h1 class="week_item">Crash Course</h1>
+                                        <h1 class="week_item">Flexbox Layout</h1>
+                                        <h1 class="week_item">Industry Convention</h1>
+                                    </details>
+                                    <details id="rightWeek3" class="details_tag">
+                                        <summary class="summary_tag"> <i class="fa-brands fa-css3-alt brandL"></i> Week
+                                            2</summary>
+                                        <h3 class="week_summary">Mini Project</h3>
+                                        <h1 class="week_item">Github setup</h1>
+                                        <h1 class="week_item">Build your first website</h1>
+                                        <h1 class="week_item">Style you first website</h1>
+                                        <h1 class="week_item">Responsiveness</h1>
+                                        <h3 class="week_summary">Projects</h3>
+                                        <h1 class="week_item">E-portfolio</h1>
+                                        <h1 class="week_item">E-Commerce</h1>
+                                        <h1 class="week_item">Final Project</h1>
+                                    </details>
+                                    <details id="rightWeek4" class="details_tag">
+                                        <summary class="summary_tag"><i class="fa-solid fa-gear brandL"></i> Week 3
+                                        </summary>
+                                        <h3 class="week_summary">Deployment</h3>
+                                        <h1 class="week_item">Domain configuration</h1>
+                                        <h1 class="week_item">Vercel deployment</h1>
+                                        <h3 class="week_summary">Bonus</h3>
+                                        <h1 class="week_item">Make money coding</h1>
+
+                                    </details>
+                                    <details id="rightWeek5" class="details_tag">
+                                        <summary class="summary_tag"><i class="fa-brands fa-js brandL"></i> Week 4
+                                        </summary>
+                                        <h3 class="week_summary">Javascript</h3>
+                                        <h1 class="week_item">How to win</h1>
+                                        <h1 class="week_item">Crash Course</h1>
+                                        <h3 class="week_item">Add JS to your site</h3>
+                                    </details>
+                                    <details id="rightWeek6" class="details_tag">
+                                        <summary class="summary_tag"><i class="fa-brands fa-react brandL"></i> Week 5
+                                        </summary>
+                                        <h3 class="week_summary">React</h3>
+                                        <h1 class="week_item">Crash Course</h1>
+                                        <h1 class="week_item">Components</h1>
+                                        <h1 class="week_item">Props</h1>
+                                        <h3 class="week_summary">Projects</h3>
+                                        <h1 class="week_item">Tabs</h1>
+                                        <h1 class="week_item">To do list</h1>
+                                        <h1 class="week_item">E-commerce store</h1>
+                                    </details>
+                                    <details id="rightWeek7" class="details_tag">
+                                        <summary class="summary_tag"> <i class="fa-solid fa-code brandL"></i> Week 6
+                                        </summary>
+                                        <h3 class="week_summary">Intermediate React</h3>
+                                        <h1 class="week_item">React Routing</h1>
+                                        <h1 class="week_item">useEffects</h1>
+                                        <h3 class="week_summary">API's</h3>
+                                        <h1 class="week_item">API Crash course</h1>
+                                        <h1 class="week_item">Pokemon API</h1>
+
+                                    </details>
+                                    <details id="rightWeek8" class="details_tag">
+                                        <summary class="summary_tag"> <i class="fa-regular fa-keyboard brandL"></i> Week
+                                            7</summary>
+                                        <h3 class="week_summary">First round</h3>
+                                        <h1 class="week_item">Js trivia</h1>
+                                        <h1 class="week_item">CSS trivia</h1>
+                                        <h3 class="week_summary">Second round</h3>
+                                        <h1 class="week_item">Algo Intro</h1>
+                                        <h1 class="week_item">Resources</h1>
+                                        <h1 class="week_item">Stringify</h1>
+                                        <h1 class="week_item">Palindrome</h1>
+                                        <h1 class="week_item">Reverse string</h1>
+                                        <h1 class="week_item">Anagram</h1>
+
+                                    </details>
+                                    <details id="rightWeek9" class="details_tag">
+                                        <summary class="summary_tag"> <i class="fas fa-dollar-sign brandL"></i> Week 8
+                                        </summary>
+                                        <h3 class="week_summary">Job search</h3>
+                                        <h1 class="week_item">Resume</h1>
+                                        <h1 class="week_item">LinkedIn</h1>
+                                        <h1 class="week_item">How to apply</h1>
+                                    </details>
+                                </div>
+                                <div class="roadmap_completed_num">
+                                    <h1 class="roadmap_complted_title">Completed: <span class="lighter">0%</span></h1>
+                                    <h1 class="roadmap_value_title">Value: <span class="lighter">$0</span></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+    <section class="section__four">
+        <div class="section__four_row">
+            <h1 class="section__four_title ttl">What are others saying?</h1>
+            <h3 class="section__four_sub_title">Real stories of student <span class="sucess">success</span></h3>
+            <div class="section_sub_line"></div>
+            <div class="section__four_main">
+                <div class="one_review">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <div class="one_review_main">
+                        <p class="text_review">The course is absolutely brilliant, if you hesitating right now I'm
+                            telling you, you will get results if you put in the time, whether it be 30 mins, 1 hour, 2
+                            hours, just make sure you put that time in.</p>
+                        <div class="review_main_low">
+                            <img alt="" src="../static/assets/abdi.15aed54.png" class="profile_review_img">
+                            <div class="second_low">
+                                <div class="nameandlogos">
+                                    <h1 class="name_second_low">Abdi Amin</h1>
+                                    <div class="logo"><a target="_blank" href="https://www.linkedin.com/in/abdiamin/"><i
+                                                class="fa-brands fa-linkedin"></i></a></div>
+                                    <div class="logo"><a target="_blank" href="https://github.com/aamin2"><i
+                                                class="fa-brands fa-github"></i></a></div>
+                                </div>
+                                <h1 class="salary_review">$90,000 Salary</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="one_review">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <div class="one_review_main">
+                        <p class="text_review">Went from going into my first year of uni not knowing what I wanted to
+                            do, to landing my first junior web developer job.</p>
+                        <div class="review_main_low">
+                            <img alt="" src="../static/assets/ethan_gonsalves.66c0b68.png" class="profile_review_img">
+                            <div class="second_low">
+                                <div class="nameandlogos">
+                                    <h1 class="name_second_low">Ethan Gonsalves</h1>
+                                    <div class="logo"><a target="_blank"
+                                            href="https://www.linkedin.com/in/ethangonsalves/"><i
+                                                class="fa-brands fa-linkedin"></i></a></div>
+                                </div>
+                                <h1 class="salary_review">$90,000 Salary</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="one_review main_review_second">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <div class="one_review_main">
+                        <p class="text_review">It's been 6 months since I started learning front-end development, and I
+                            got hired yesterday at a digital agency as a front-end developer.</p>
+                        <div class="review_main_low">
+                            <img alt="" src="../static/assets/iman.80f689d.png" class="profile_review_img">
+                            <div class="second_low">
+                                <div class="nameandlogos">
+                                    <h1 class="name_second_low">Iman Musa</h1>
+
+                                    <div class="logo"><a target="_blank"
+                                            href="https://www.linkedin.com/in/iman-musa-3a9181249"><i
+                                                class="fa-brands fa-linkedin"></i></a></div>
+                                    <div class="logo"><a target="_blank" href="https://github.com/im9n"><i
+                                                class="fa-brands fa-github"></i></a></div>
+                                </div>
+                                <h1 class="salary_review">$90,000 Salary</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="one_review main_review_second">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <div class="one_review_main">
+                        <p class="text_review">This course is initially designed at a beginner level, and then
+                            progresses into more exciting and complex topics once you become more confident.</p>
+                        <div class="review_main_low">
+                            <img alt="" src="../static/assets/mohamed.4ebc6b6.png" class="profile_review_img">
+                            <div class="second_low">
+                                <div class="nameandlogos">
+                                    <h1 class="name_second_low">Mohamed Zreika</h1>
+                                    <div class="logo"><a target="_blank"
+                                            href="https://www.linkedin.com/in/mohamed-zreika-27b2b6242/"><i
+                                                class="fa-brands fa-linkedin"></i></a></div>
+                                    <div class="logo"><a target="_blank" href="https://github.com/Moe-Zart/"><i
+                                                class="fa-brands fa-github"></i></a></div>
+                                </div>
+                                <h1 class="salary_review">$90,000 Salary</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section__five">
+        <div class="section__five_row">
+            <h1 class="section__five_title ttl">Land a <span class="sucess">job</span> or we'll refund you.</h1>
+            <div class="section_sub_line"></div>
+            <div class="section__five_main">
+                <div class="section__five_left">
+                    <p class="section__five_text">With our job guarantee program, you can invest in your career without
+                        any worry of not seeing a return. We are certain that our curriculum and coaching will result in
+                        you landing a developer job within one year, so much so that we offer a full refund if this does
+                        not occur. Invest with confidence in yourself and your career at our job guarantee program!
+                        <button class="section__one_button section__five_button" onclick="redirectToRegister()">Start for free</button>
+                </div>
+
+                <div class="section__five_right">
+                    <img src="../static/assets/Refund-bro.png" alt="" class="section__five_img">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section__six">
+        <div class="section__six_row">
+            <h1 class="section__six_title ttl">Frequntly asked <span class="sucess">questions</span></h1>
+            <div class="section_sub_line"></div>
+            <div class="section__six_week1">
+                <details class="details_faq">
+                    <summary class="summary_faq"> <span class="week_num">0</span> Who is Frontend Tutor for?</summary>
+                    <p class="collapsed_p">Frontend Tutor is for anyone who wants to become a professional frontend
+                        developer by learning the most in-demand coding skills fast. This is for you if you want to
+                        start a career in the tech industry or simply if you want to learn to code from scratch and
+                        develop impressive coding skills in record time.</p>
+                </details>
+                <details class="details_faq">
+                    <summary class="summary_faq"> <span class="week_num">1</span> Do I need prior knowledge?</summary>
+                    <p class="collapsed_p">No, you do NOT need prior knowledge in order to join the Frontend Simplified
+                        bootcamp. Our training is specifically designed to take you from a complete beginner to land a
+                        high paying job in 8 weeks.</p>
+                </details>
+                <details class="details_faq">
+                    <summary class="summary_faq"> <span class="week_num">2</span> What skill level is this program for?
+                    </summary>
+                    <p class="collapsed_p">Frontend Tutor was designed to take somebody from knowing nothing about
+                        coding to being a highly paid full-time developer in the shortest time possible. Experienced
+                        developers have also used Frontend Simplified to build their portfolio, resume and cover letter
+                        to help fast-track them into the industry. We have helped developers at both ends of the skill
+                        spectrum.</p>
+                </details>
+
+                <details class="details_faq">
+                    <summary class="summary_faq"> <span class="week_num">3</span> Do I need a college degree?</summary>
+                    <p class="collapsed_p">Not at all! Most students graduating from Frontend Tutor and landing
+                        full-time positions paying up to $200,000 per year do not have a university degree. The entire
+                        team that created and perfected the roadmap at Frontend Simplified were top tech engineers
+                        (Google, Canva, Amazon, Atlassian, Meta) making $160,000+ without a degree.</p>
+                </details>
+
+                <details class="details_faq">
+                    <summary class="summary_faq"> <span class="week_num">4</span> Are there any hidden fees?</summary>
+                    <p class="collapsed_p">No there're no hidden fees, you get 100% access to the program, the community
+                        and the coaching calls. There's no additional fees or hidden fees</p>
+                </details>
+
+                <details class="details_faq">
+                    <summary class="summary_faq"> <span class="week_num">5</span> Is there any money-back guarantee
+                    </summary>
+                    <p class="collapsed_p">Absolutely! We know you'll love Frontend Tutor. That's why we have a program
+                        with a money-back, job guarantee. If you don't land a developer job in under 12 months while
+                        following all the requirements, simply email info@frontendtutor.com for a refund.</p>
+                </details>
+            </div>
+    </section>
     </div>
+    <footer class="footer">
+        <div class="footer__row">
+            <div class="footer__main">
+                <div class="footer__main_one">
+                    <h1 class="footer_one_title">Actions</h1>
+                    <h1 class="footer_one_sub_title"><a href="">Start Learning</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Account Login</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Join Discord</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Contact Us</a></h1>
+                </div>
+                <div class="footer__main_one">
+                    <h1 class="footer_one_title">Crash Courses</h1>
+                    <h1 class="footer_one_sub_title"><a href="">HTML</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">CSS</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Javascript</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">React</a></h1>
+                </div>
+                <div class="footer__main_one">
+                    <h1 class="footer_one_title">Polices</h1>
+                    <h1 class="footer_one_sub_title"><a href="">Terms of services</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Privacy Policy</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Job Garuntee Policy</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Earnings disclaimer</a></h1>
+                </div>
+
+                <div class="footer__main_one">
+                    <h1 class="footer_one_title"><a href="">Socials</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Tiktok</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Youtube</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Instagram</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="">Snapchat</a></h1>
+                </div>
+            </div>
+            <div class="footerend"></div>
+            <h4 class="footerendtext">Copyright © 2023 Frontend Tutor LTD.</h4>
+        </div>
+    </footer>
     <script>
         var allDetailsElements = document.querySelectorAll('details');
-    
+
         allDetailsElements.forEach((details) => {
             details.addEventListener('click', function () {
                 allDetailsElements.forEach((details) => {
@@ -363,34 +616,34 @@
                 });
             });
         });
-var leftDetails = document.querySelectorAll('.section__three_week1 details');
-var rightDetails = document.querySelectorAll('.roadmap_container details');
+        var leftDetails = document.querySelectorAll('.section__three_week1 details');
+        var rightDetails = document.querySelectorAll('.roadmap_container details');
 
-function syncDetails(detailsA, detailsB, prefixA, prefixB) {
-    detailsA.forEach((detail) => {
-        detail.addEventListener('click', function () {
-            // Get the week number from the id of the clicked detail
-            var weekNumber = this.querySelector('summary').id.replace(prefixA, '');
+        function syncDetails(detailsA, detailsB, prefixA, prefixB) {
+            detailsA.forEach((detail) => {
+                detail.addEventListener('click', function () {
+                    // Get the week number from the id of the clicked detail
+                    var weekNumber = this.querySelector('summary').id.replace(prefixA, '');
 
-            // Find the corresponding detail on the other side
-            var correspondingDetail = document.getElementById(prefixB + weekNumber);
+                    // Find the corresponding detail on the other side
+                    var correspondingDetail = document.getElementById(prefixB + weekNumber);
 
-            // Synchronize the 'open' attribute of both details
-            if (this.hasAttribute('open')) {
-                correspondingDetail.removeAttribute('open');
-            } else {
-                correspondingDetail.setAttribute('open', '');
-            }
-        });
-    });
-}
-
-// Synchronize left details with right details
-syncDetails(leftDetails, rightDetails, 'leftWeek', 'rightWeek');
-
-// Synchronize right details with left details
-syncDetails(rightDetails, leftDetails, 'rightWeek', 'leftWeek');
-
+                    // Synchronize the 'open' attribute of both details
+                    if (this.hasAttribute('open')) {
+                        correspondingDetail.removeAttribute('open');
+                    } else {
+                        correspondingDetail.setAttribute('open', '');
+                    }
+                });
+            });
+        }
+        // Synchronize left details with right details
+        syncDetails(leftDetails, rightDetails, 'leftWeek', 'rightWeek');
+        // Synchronize right details with left details
+        syncDetails(rightDetails, leftDetails, 'rightWeek', 'leftWeek');
+        function redirectToRegister() {
+            window.location.href = "/register";
+        }
     </script>
 </body>
 
