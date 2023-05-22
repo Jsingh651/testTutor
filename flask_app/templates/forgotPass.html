@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/registrations.css">
+    </script>
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/forgotpassword.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="main_container">
+                <div class="left_contianer">
+                    <img class="header__image_logo" src="../static/assets/logo.png" onclick="redirectToLanding()"
+                        alt="">
+                    <h1 class="form_title_login">Confirm Email</h1>
+                    <form action="/forgot/password/form" method="post">
+                        <input type="email" placeholder="email" name="email" class="email__login">
+                        {% with messages =
+                        get_flashed_messages(category_filter="email_error_forgot") %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p class="email_error errors">{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <p class="span_text">We will send you a reset link if your email is valid.
+                        </p>
+                        <input type="submit" value="submit" class="login_button">
+                    </form>
+
+                </div>
+                <div class="right_container">
+                    <h1 class="right_cont_title">Forgot your password? No problem! We promise not to
+                        judge your temporary amnesia. Let's get you squared away.</h1>
+                    <img class="right_cont_image" src="../static/assets/Studying-rafiki.png" alt="">
+                </div>
+            </div>
+        </div>
+        <script>
+            function redirectToLanding() {
+                window.location.href = "/";
+            }
+            function showSuccessMessage(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Create a new div element to hold the success message.
+        const successMessageDiv = document.createElement("div");
+        successMessageDiv.classList.add("success-message");
+        successMessageDiv.innerText = "If your email is valid, a reset link will be sent to you.";
+
+        // Append the success message div to the body of the document.
+        document.body.appendChild(successMessageDiv);
+
+        // Create a new overlay div to cover the rest of the page.
+        const overlayDiv = document.createElement("div");
+        overlayDiv.classList.add("overlay");
+
+        // Append the overlay div to the body of the document.
+        document.body.appendChild(overlayDiv);
+
+        // Hide the success message div after 5 seconds.
+        setTimeout(() => {
+            successMessageDiv.style.display = "none";
+            overlayDiv.style.display = "none";
+            // Submit the form programmatically
+            event.target.closest('form').submit();
+        }, 3000);
+    }
+
+    // Attach an event listener to the submit button to show the success message when the form is submitted.
+    document.querySelector(".login_button").addEventListener("click", showSuccessMessage);
+</script>
+
+
+
+        </script>
+</body>
+
+</html>

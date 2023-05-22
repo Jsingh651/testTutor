@@ -21,27 +21,33 @@
                     <form action="/register" method="post">
                         <h3 class="right_container__title">Create your free Account!</h3>
     
-                        {% with messages = get_flashed_messages(category_filter="first_name_error") %}
+                        
+                        <input name="first_name" class="first_name" type="text" autocomplete="off" placeholder="First Name"
+                            value="{{session['first_name']}}">
+
+                            {% with messages = get_flashed_messages(category_filter="first_name_error") %}
                         {% if messages %}
                         {% for message in messages %}
                         <p class="first_name-error errors">{{message}}</p>
                         {% endfor %}
                         {% endif %}
                         {% endwith %}
-                        <input name="first_name" class="first_name" type="text" autocomplete="off" placeholder="First Name"
-                            value="{{session['first_name']}}">
     
     
-                        {% with messages = get_flashed_messages(category_filter="last_name_error") %}
+                        
+                        <input name="last_name" class="last_name" type="text" placeholder=" Last Name "
+                            value="{{session['last_name']}}">
+
+                            {% with messages = get_flashed_messages(category_filter="last_name_error") %}
                         {% if messages %}
                         {% for message in messages %}
                         <p class="last_name-error errors ">{{message}}</p>
                         {% endfor %}
                         {% endif %}
                         {% endwith %}
-                        <input name="last_name" class="last_name" type="text" placeholder=" Last Name "
-                            value="{{session['last_name']}}">
     
+                        
+                        <input name="email" class="email" type="text" placeholder="Email" value="{{session['email']}}">
                         {% with messages = get_flashed_messages(category_filter="email_error") %}
                         {% if messages %}
                         {% for message in messages %}
@@ -56,15 +62,8 @@
                         {% endfor %}
                         {% endif %}
                         {% endwith %}
-                        <input name="email" class="email" type="text" placeholder="Email" value="{{session['email']}}">
     
-                        {% with messages = get_flashed_messages(category_filter="password_error") %}
-                        {% if messages %}
-                        {% for message in messages %}
-                        <p class="password_error errors">{{message}}</p>
-                        {% endfor %}
-                        {% endif %}
-                        {% endwith %}
+                        
                         <div class="password-field">
                             <input name="password" class="password" type="password" placeholder="Password" id="password">
                             <div class="passwordBtn">
@@ -72,15 +71,15 @@
                                 <i class="fa fa-eye-slash"></i>
                             </div>
                         </div>
-
-    
-                        {% with messages = get_flashed_messages(category_filter="accepted_error") %}
+                        {% with messages = get_flashed_messages(category_filter="password_error") %}
                         {% if messages %}
                         {% for message in messages %}
                         <p class="password_error errors">{{message}}</p>
                         {% endfor %}
                         {% endif %}
                         {% endwith %}
+
+    
                         <div class="right_container__accepted">
                             <div class="right_container__accepted__text">
                                 <label class="accepted_terms">By Signing up you agree to the our <a class="txtbrow"

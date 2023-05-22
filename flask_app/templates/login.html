@@ -16,22 +16,26 @@
         <div class="row">
             <div class="main_container">
                 <div class="left_contianer">
-                    <img class="header__image_logo" src="../static/assets/logo.png" onclick="redirectToLanding()" alt="">
+                    <img class="header__image_logo" src="../static/assets/logo.png" onclick="redirectToLanding()"
+                        alt="">
                     <h1 class="form_title_login">Log In</h1>
                     <form action="/login/user" method="post">
                         <input class="email__login" type="email" id="email" name="email" placeholder="Email">
                         <div class="password-field">
-                            <input name="password" class="password" type="password" placeholder="Password" id="password">
+                            <input name="password" class="password" type="password" placeholder="Password"
+                                id="password">
                             <div class="passwordBtn">
                                 <i class="fa fa-eye"></i>
                                 <i class="fa fa-eye-slash"></i>
                             </div>
                         </div>
-                            <div class="links">
-                                <a href="/register" class="password_forgot">Create account</a>
-                                <a href="/forgot/password" class="password_forgot _1">Forgot Password?</a>
-                            </div>
-                            <button class="login_button">Let's go!</button>
+                        <div class="links">
+                            <a href="/register" class="password_forgot">Create account</a>
+                            <a class="password_forgot _1" href="/forgot/pass">Forgot Password?</a>
+                        </div>
+
+
+                        <button class="login_button">Let's go!</button>
                     </form>
                 </div>
                 <div class="right_container">
@@ -46,7 +50,7 @@
             const showPasswordIcon = passwordBtn.querySelector('.fa-eye-slash');
             const hidePasswordIcon = passwordBtn.querySelector('.fa-eye');
             const passwordState = localStorage.getItem('passwordState');
-    
+
             if (passwordState === 'hidden') {
                 passwordInput.type = 'password';
                 showPasswordIcon.style.display = 'block';
@@ -58,7 +62,7 @@
                 hidePasswordIcon.style.display = 'block';
                 hidePasswordIcon.classList.add('active');
             }
-    
+
             passwordBtn.addEventListener('click', function () {
                 if (passwordInput.type === 'password') {
                     passwordInput.type = 'text';
@@ -77,40 +81,38 @@
                 }
             });
 
-             function redirectToLanding() {
-            window.location.href = "/";
-        }
+            function redirectToLanding() {
+                window.location.href = "/";
+            }
+
+            function showForm() {
+                var overlay = document.getElementById('overlay');
+                var formContainer = document.getElementById('formContainer');
+                overlay.style.display = 'block';
+                formContainer.style.display = 'block';
+
+                // Store the form visibility state in localStorage
+                localStorage.setItem('formVisible', 'true');
+            }
+
+            function closeForm() {
+                var overlay = document.getElementById('overlay');
+                var formContainer = document.getElementById('formContainer');
+                overlay.style.display = 'none';
+                formContainer.style.display = 'none';
+
+                // Remove the form visibility state from localStorage
+                localStorage.removeItem('formVisible');
+            }
+
+            // Check the form visibility state on page load
+            window.addEventListener('load', function () {
+                var isFormVisible = localStorage.getItem('formVisible');
+                if (isFormVisible === 'true') {
+                    showForm();
+                }
+            });
         </script>
 </body>
 
 </html>
-
-<!-- 
-
-
-    <div class="form_container">
-                <form class="form" action="/login/user" method="POST">
-                    <h1 class="nav_text">Sign in to your Frontend Tutor Account!</h1>
-                    {% with messages = get_flashed_messages()%}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <p class="password_error errors">{{message}}</p>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                    <input class="email__login" type="email" id="email" name="email" required placeholder="Email">
-
-                    <input class="password_login" type="password" id="password" name="password" required
-                        placeholder="Password">
-
-                    <button class="submit" type="submit">Login</button>
-                    <a class="create_account__link" href="/register">New to Frontend Tutor? <span class="txtbrow">Sign Up
-                            Here.</span></a>
-                    <div class="other_links">
-                        <a class="forgot_password_login" href="/privacy/policy">Need Help?</a>
-                        <a class="forgot_password_login" href="/privacy/policy">Terms of Service</a>
-                        <a class="forgot_password_login" href="/privacy/policy">Privacy Policy</a>
-                    </div>
-                </form>
-            </div>
- -->

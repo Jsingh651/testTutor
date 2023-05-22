@@ -16,7 +16,6 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.accepted = data['accepted']
 
     
     @classmethod
@@ -30,19 +29,36 @@ class User:
         query = 'SELECT * FROM users WHERE id = %(id)s;'
         result = connectToMySQL(db).query_db(query, data)
         return cls(result[0])
+    
+
 
     @classmethod
     def register(cls, data):
         query = '''
         INSERT INTO users
-        (first_name, last_name, email, password, accepted, created_at) 
-        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s,%(accepted)s, NOW());
+        (first_name, last_name, email, password, created_at) 
+        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s,  NOW());
         '''
         return connectToMySQL(db).query_db(query, data)
 
     @classmethod
     def update(cls, data):
         query = 'UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;'
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def updateEmail(cls, data):
+        query = 'UPDATE users SET email = %(email)s'
+        return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def updatename(cls, data):
+        query = 'UPDATE users SET first_name = %(first_name)s'
+        return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def update_password(cls,data):
+        query = 'UPDATE users SET password = %(password)s WHERE email = %(email)s'
         return connectToMySQL(db).query_db(query, data)
 
     @classmethod
@@ -57,16 +73,20 @@ class User:
         if len(result) < 1:
             return False
         return cls(result[0])
+    
+    @staticmethod
+    def validateEmail(user):
+        is_valid = True
+        if not EMAIL_REGEX.match(user['email']): 
+            flash("Invalid email address!", "email_error_forgot")
+            is_valid = False
+        return is_valid
 
     @staticmethod
     def validate(user):
         is_valid = True
         if User.get_by_email({"email": user['email']}):
             flash('Email already exists', 'exsist')
-            is_valid = False
-
-        if not user.get("accepted"):
-            flash('You must accept the terms and conditions', 'accepted_error')
             is_valid = False
 
         if len(user['first_name']) < 3:

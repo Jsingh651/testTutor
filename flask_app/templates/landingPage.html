@@ -24,10 +24,17 @@
                     </div>
                 </div>
                 <div class="header__right_container">
+                    {% if session['user_id'] != Null %}
+                    <button class="header__get_pro_button" onclick="redirectToPro()"><i class="fa-solid fa-crown"></i>
+                        Get Pro </button>
+                    <div class="user_greeting" onclick="redirectToProfile()">{{ first_name }}</div>
+                    {% else %}
                     <a class="header__login_link" href="/login">Login</a>
                     <button class="header__signup_button" onclick="redirectToRegister()">Signup</button>
-
+                    {% endif %}
                 </div>
+
+
             </div>
         </nav>
     </header>
@@ -56,8 +63,13 @@
                     </div>
 
                     <div class="divider">
+                        {% if session['user_id'] != Null %}
+                        <button class="section__one_button" onclick="redirectToRegister()">Continue</button>
+                        {% else %}
                         <button class="section__one_button" onclick="redirectToRegister()">Get started</button>
                         <a href="" class="section__one_disclaimer">(No credit card required)</a>
+                        {% endif %}
+
                     </div>
 
                 </div>
@@ -506,7 +518,17 @@
                         any worry of not seeing a return. We are certain that our curriculum and coaching will result in
                         you landing a developer job within one year, so much so that we offer a full refund if this does
                         not occur. Invest with confidence in yourself and your career at our job guarantee program!
-                        <button class="section__one_button section__five_button" onclick="redirectToRegister()">Start for free</button>
+
+                        {% if session['user_id'] != Null %}
+                        <button class="section__one_button section__five_button"
+                            onclick="redirectToRegister()">Continue</button>
+
+                        {% else %}
+                        <button class="section__one_button section__five_button" onclick="redirectToRegister()">Start
+                            for free</button>
+                        {% endif %}
+
+
                 </div>
 
                 <div class="section__five_right">
@@ -644,7 +666,35 @@
         function redirectToRegister() {
             window.location.href = "/register";
         }
+
+        function redirectToProfile() {
+            window.location.href = "/profile/page/9090u343109uu43438041292409313/3243/prof/{{id}}";
+        }
+
+        function showDropdown() {
+            var dropdown = document.getElementById("dropdown");
+            dropdown.classList.toggle("show");
+        }
+
+        var prevScrollPos = window.pageYOffset;
+var header = document.querySelector(".header");
+
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+
+  if (prevScrollPos > currentScrollPos) {
+    // User is scrolling up, show the navbar with a delay
+    header.classList.remove("hide-navbar");
+  } else {
+    // User is scrolling down, hide the navbar
+    header.classList.add("hide-navbar");
+  }
+
+  prevScrollPos = currentScrollPos;
+};
+
     </script>
+
 </body>
 
 </html>

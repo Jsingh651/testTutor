@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/profile.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e53bf076c4.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <div class="row">
+                <div class="header__left_container">
+
+                    <div class="header__logo">
+                        <img class="header__image_logo" src="{{url_for('static', filename = 'assets/logo.png')}}"
+                            alt="">
+                    </div>
+                </div>
+                <div class="header__right_container">
+                    {% if session['user_id'] != Null %}
+                    <button class="header__get_pro_button" onclick="redirectToPro()"><i class="fa-solid fa-crown"></i>
+                        Get Pro </button>
+                    <div class="user_greeting" onclick="redirectToProfile()">{{ first_name }}</div>
+                    {% else %}
+                    <a class="header__login_link" href="/login">Login</a>
+                    <button class="header__signup_button" onclick="redirectToRegister()">Signup</button>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="section__one_profile">
+        <div class="section__one_profile_row">
+            <div class="section__one_main">
+                <h1 class="section__one_main_title">Account Information</h1>
+                <div class="section__one_info_cont">
+                    <div class="left_side">
+                        <h1 class="section__one_title_text" id="emailText">Email</h1>
+                        <div id="emailDisplay" class="section__one_response_text">{{user.email}}</div>
+                        <form class="emailinput" id="emailForm" action="/update/email" method="post"
+                            style="display: none;">
+                            <input type="email" id="emailInput" name="email" value="{{user.email}}" class="form_input_d" required>
+                            <input type="hidden" name="id" value="{{user.id}}">
+
+                            <input class="inputhiddensubmit" id="hiddenButton" type="submit" value="submit">
+                        </form>
+                    </div>
+                    <!-- <div class="right_side">
+                        <button id="editButton" class="section__one_edit_btn" onclick="editEmail()">Edit</button>
+                        <div class="sub_right_side" id='sub_right_side' style="display: none;">
+                            <button id="cancelButton" class="section__one_edit_btn cancel_btn" style="display: none;"
+                                onclick="cancelEdit()">Cancel</button>
+                            <input id="submitButton" class="section__one_edit_btn submit_btn" type="submit"
+                                value="Submit" style="display: none;">
+                        </div>
+                    </div> -->
+                </div>
+                <div class="section__one_info_cont">
+                    <div class="left_side">
+                        <h1 class="section__one_title_text" id="nameText">Name</h1>
+                        <div id="nameDisplay" class="section__one_response_text">{{user.first_name}}</div>
+                        <form class="emailinput" id="nameForm" action="/update/name" method="post"
+                            style="display: none;">
+                            <input type="text" id="nameInput" name="first_name" value="{{user.first_name}}" class="form_input_d" required>
+                            <input type="hidden" name="id" value="{{user.id}}">
+                            <input class="inputhiddensubmit" id="hiddenNameButton" type="submit" value="submit">
+                        </form>
+                    </div>
+                    <div class="right_side">
+                        <button id="editNameButton" class="section__one_edit_btn" onclick="editName()">Edit</button>
+                        <div class="sub_right_side" id='sub_right_side' style="display: none;">
+                            <button id="cancelNameButton" class="section__one_edit_btn cancel_btn" style="display: none;"
+                                onclick="cancelEditName()">Cancel</button>
+                            <input id="submitNameButton" class="section__one_edit_btn submit_btn" type="submit"
+                                value="Submit" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div class="section__one_info_cont">
+                    <div class="left_side">
+                        <h1 class="section__one_title_text">Password</h1>
+                        <h3 class="section__one_response_text">Update your password</h3>
+                    </div>
+                    <div class="right_side">
+                        <!-- <button class="section__one_edit_btn" onclick="redirectToFP()">Edit</button> -->
+                        <button class="section__one_edit_btn" onclick="showForm()">Edit</button>
+
+                        <div id="overlay">
+                            <div id="formContainer">
+                                <i class="fas fa-times" onclick="closeForm()"></i>
+                                <div class="main_container">
+                                    <div class="left_contianer">
+                                        <h1 class="form_title_login">Confirm Email</h1>
+
+                                        <form class="formform" action="/forgot/password" method="post">
+                                            <input type="hidden" name="id" value="{{user.id}}">
+                                            <input type="email" placeholder="email" name="email" class="email__login"
+                                                required>
+                                            {% with messages =
+                                            get_flashed_messages(category_filter="email_error_forgot") %}
+                                            {% if messages %}
+                                            {% for message in messages %}
+                                            <p class="email_error errors">{{message}}</p>
+                                            {% endfor %}
+                                            {% endif %}
+                                            {% endwith %}
+
+
+                                            <p class="span_text">We will send you a reset link if your email is valid.
+                                            </p>
+                                            <button type="submit" class="login_button">Submit</button>
+
+                                            {% if reset_success is not none %}
+                                            <div class="success_overlay"></div>
+                                            {% if reset_success %}
+                                            <div class="success_message_container">
+                                                <p class="success_message">If your email is valid, a reset link will be sent to you.</p>
+                                            </div>
+                                            {% else %}
+                                            <div class="success_message_container">
+                                                <p class="success_message">Email successfully sent!</p>
+                                            </div>
+                                            {% endif %}
+                                            {% endif %}
+
+                                        </form>
+
+                                    </div>
+                                    <div class="right_container">
+                                        <h1 class="right_cont_title">Forgot your password? No problem! We promise not to
+                                            judge your temporary amnesia. Let's get you squared away.</h1>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <div class="section__one_info_cont">
+                <div class="left_side">
+                    <h1 class="section__one_title_text">Subscription Plan</h1>
+                    <h3 class="section__one_response_text">Update your subscripiton here</h3>
+                </div>
+                <div class="right_side">
+                    <button class="section__one_edit_btn biggerbtn"><i class="fa-solid fa-crown spec"></i> Get
+                        pro</button>
+                </div>
+            </div>
+            <div class="section__one_info_cont">
+                <div class="left_side">
+                    <h1 class="section__one_title_text">Payment Prefrence</h1>
+                    <h3 class="section__one_response_text">Update your payment here</h3>
+                </div>
+                <div class="right_side">
+                    <button class="section__one_edit_btn biggerbtn">Update</button>
+                </div>
+            </div>
+            <div class="section__one_info_cont last">
+                <div class="left_side">
+                    <a href="/logout"><button class="logout_btn">Logout</button></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function showForm() {
+            var overlay = document.getElementById('overlay');
+            var formContainer = document.getElementById('formContainer');
+            overlay.style.display = 'block';
+            formContainer.style.display = 'block';
+
+            // Store the form visibility state in localStorage
+            localStorage.setItem('formVisible', 'true');
+        }
+
+        function closeForm() {
+            var overlay = document.getElementById('overlay');
+            var formContainer = document.getElementById('formContainer');
+            overlay.style.display = 'none';
+            formContainer.style.display = 'none';
+
+            // Remove the form visibility state from localStorage
+            localStorage.removeItem('formVisible');
+        }
+
+        // // Check the form visibility state on page load
+        // window.addEventListener('load', function () {
+        //     var isFormVisible = localStorage.getItem('formVisible');
+        //     if (isFormVisible === 'true') {
+        //         showForm();
+        //     }
+        // });
+
+        function editEmail() {
+            var emailDisplay = document.getElementById('emailDisplay');
+            var emailForm = document.getElementById('emailForm');
+            var emailInput = document.getElementById('emailInput');
+            var editButton = document.getElementById('editButton');
+            var submitButton = document.getElementById('submitButton');
+            var cancelButton = document.getElementById('cancelButton');
+            var sub_right_side = document.getElementById('sub_right_side');
+          
+            // Swap the email display and form visibility
+            emailDisplay.style.display = 'none';
+            emailForm.style.display = 'block';
+
+            // Swap the edit button and submit/cancel button visibility
+            editButton.style.display = 'none';
+            sub_right_side.style.display = 'block';
+            submitButton.style.display = 'block';
+            cancelButton.style.display = 'block';
+
+            // Focus on the email input for immediate editing
+            emailInput.focus();
+
+            // Handle form submission
+            submitButton.onclick = function (e) {
+                e.preventDefault(); // Prevent the form from refreshing the page
+                var newEmail = emailInput.value; // Get the new email from the input field
+
+                // Change the email display to the new email
+                emailDisplay.innerText = newEmail;
+
+                // Swap the email display and form visibility back
+                emailDisplay.style.display = 'block';
+                emailForm.style.display = 'none';
+
+                // Swap the edit button and submit/cancel button visibility back
+                editButton.style.display = 'block';
+                submitButton.style.display = 'none';
+                cancelButton.style.display = 'none';
+            };
+        }
+
+        function cancelEdit() {
+            var emailDisplay = document.getElementById('emailDisplay');
+            var emailForm = document.getElementById('emailForm');
+            var editButton = document.getElementById('editButton');
+            var submitButton = document.getElementById('submitButton');
+            var cancelButton = document.getElementById('cancelButton');
+
+
+            // Swap the email display and form visibility back
+
+            emailDisplay.style.display = 'block';
+            emailForm.style.display = 'none';
+
+            // Swap the edit button and submit/cancel button visibility back
+            editButton.style.display = 'block';
+            submitButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+        }
+
+        document.getElementById('submitButton').addEventListener('click', function () {
+            document.getElementById('hiddenButton').click();
+        });
+
+
+
+        function editName() {
+            var nameDisplay = document.getElementById('nameDisplay');
+            var nameForm = document.getElementById('nameForm');
+            var nameInput = document.getElementById('nameInput');
+            var editNameButton = document.getElementById('editNameButton');
+            var submitNameButton = document.getElementById('submitNameButton');
+            var cancelNameButton = document.getElementById('cancelNameButton');
+            var sub_right_side = document.getElementById('sub_right_side');
+            var nameText = document.getElementById('nameText');
+
+nameText.style.display = 'none';
+            // Swap the email display and form visibility
+            nameDisplay.style.display = 'none';
+            nameForm.style.display = 'block';
+
+            // Swap the edit button and submit/cancel button visibility
+            editNameButton.style.display = 'none';
+            sub_right_side.style.display = 'block';
+            submitNameButton.style.display = 'block';
+            cancelNameButton.style.display = 'block';
+
+            // Focus on the email input for immediate editing
+            nameInput.focus();
+
+            // Handle form submission
+            submitButton.onclick = function (e) {
+                e.preventDefault(); // Prevent the form from refreshing the page
+                var newName = nameInput.value; // Get the new email from the input field
+
+                // Change the email display to the new email
+                nameDisplay.innerText = newName;
+
+                // Swap the email display and form visibility back
+                nameDisplay.style.display = 'block';
+                nameForm.style.display = 'none';
+
+                // Swap the edit button and submit/cancel button visibility back
+                editNameButton.style.display = 'block';
+                submitNameButton.style.display = 'none';
+                cancelNameButton.style.display = 'none';
+            };
+        }
+
+        function cancelEditName() {
+            var nameDisplay = document.getElementById('nameDisplay');
+            var nameForm = document.getElementById('nameForm');
+            var editNameButton = document.getElementById('editNameButton');
+            var submitNameButton = document.getElementById('submitNameButton');
+            var cancelNameButton = document.getElementById('cancelNameButton');
+            var nameText = document.getElementById('nameText');
+
+            // Swap the email display and form visibility back
+            nameText.style.display = 'block'
+            nameDisplay.style.display = 'block';
+            nameForm.style.display = 'none';
+
+            // Swap the edit button and submit/cancel button visibility back
+            editNameButton.style.display = 'block';
+            submitNameButton.style.display = 'none';
+            cancelNameButton.style.display = 'none';
+        }
+
+        document.getElementById('submitNameButton').addEventListener('click', function () {
+            document.getElementById('hiddenNameButton').click();
+        });
+
+        function redirectToFP() {
+            window.location.href = "/forgot/pass";
+        }
+
+
+    </script>
+</body>
+
+</html>
