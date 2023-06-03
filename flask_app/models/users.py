@@ -16,8 +16,21 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.payment_intent_id = data['payment_intent_id']
+        self.stripe_customer_id = data['stripe_customer_id']
+        self.is_paying = data['is_paying']
+        
 
-    
+    @classmethod
+    def save(cls, data):
+        query = """
+        UPDATE users
+        SET is_paying = %(is_paying)s
+        WHERE stripe_customer_id = %(stripe_customer_id)s
+        """
+        
+        return connectToMySQL(db).query_db(query, data)
+
     @classmethod
     def get_all(cls):
         query = 'SELECT * FROM users'
@@ -36,8 +49,8 @@ class User:
     def register(cls, data):
         query = '''
         INSERT INTO users
-        (first_name, last_name, email, password, created_at) 
-        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s,  NOW());
+        (first_name, last_name, email, password,stripe_customer_id, created_at) 
+        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s,%(stripe_customer_id)s,  NOW());
         '''
         return connectToMySQL(db).query_db(query, data)
 
@@ -59,6 +72,11 @@ class User:
     @classmethod
     def update_password(cls,data):
         query = 'UPDATE users SET password = %(password)s WHERE email = %(email)s'
+        return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def stripe_customer_id(cls,data):
+        query = "UPDATE users SET stripe_customer_id = %()s WHERE id = %()s"
         return connectToMySQL(db).query_db(query, data)
 
     @classmethod

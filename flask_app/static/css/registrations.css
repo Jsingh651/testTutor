@@ -39,7 +39,7 @@ body::-webkit-scrollbar {
     text-align: left;
     display: flex;
     flex-direction: column;
-    padding-left: 40px;
+    padding-left: 50px;
     height: 100vh;
 }
 
@@ -50,11 +50,11 @@ body::-webkit-scrollbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 40px;
+    /* padding-left: 40px; */
     padding-top: 40px;
-    border-bottom-left-radius: 4px;
     height: 100vh;
     overflow-y: hidden;
+    text-align: center;
 }
 
 input:focus {
@@ -139,6 +139,7 @@ input {
     text-decoration: none;
     transition: all 300ms ease;
     color: black;
+    text-align: left;
 
 }
 
@@ -158,20 +159,24 @@ input {
     font-weight: bold;
     color: white;
     cursor: pointer;
-    transition: all 200ms ease;
+    transition: all 300ms ease;
 }
 .form_submit_button:hover{
-    opacity: 0.9;
+    background-color: white;
+    color: rgb(39, 89, 255);
+    border: 1px solid rgb(39, 89, 255);
 }
 .login_button:hover {
-    opacity: 0.9;
+    background-color: white;
+    color: rgb(39, 89, 255);
+    border: 1px solid rgb(39, 89, 255);
 }
 
 .right_cont_title {
-    font-size: 60px;
+    font-size: 50px;
     text-transform: uppercase;
     color: white;
-    text-align: left;
+    text-align: center;
     width: 90%;
     margin-top: 40px;
     font-weight: 900;
@@ -249,23 +254,33 @@ input {
 
 
 @media(max-width:1050px) {
+
+  
     .main_container {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
-        height: fit-content;
     }
 
+    .specialformleft{
+        /* height: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background-color: blue;
+        width: 100%; */
+        height: 90% !important;
+
+    }
     .left_contianer {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0;
         width: 80%;
+        min-height: fit-content;
         height: 80%;
         margin: 0 auto;
-        margin-top: 60px;
         border: 0;
         border-radius: 8px;
         padding: 12px;

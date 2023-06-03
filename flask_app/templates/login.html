@@ -15,6 +15,10 @@
     <div class="container">
         <div class="row">
             <div class="main_container">
+                <div class="right_container">
+                    <h1 class="right_cont_title">Experience coding joy and learn with fun!</h1>
+                    <img class="right_cont_image" src="../static/assets/Studying-rafiki.png" alt="">
+                </div>
                 <div class="left_contianer">
                     <img class="header__image_logo" src="../static/assets/logo.png" onclick="redirectToLanding()"
                         alt="">
@@ -25,8 +29,8 @@
                             <input name="password" class="password" type="password" placeholder="Password"
                                 id="password">
                             <div class="passwordBtn">
-                                <i class="fa fa-eye"></i>
                                 <i class="fa fa-eye-slash"></i>
+                                <i class="fa fa-eye"></i>
                             </div>
                         </div>
                         <div class="links">
@@ -38,48 +42,47 @@
                         <button class="login_button">Let's go!</button>
                     </form>
                 </div>
-                <div class="right_container">
-                    <h1 class="right_cont_title">Experience coding joy and learn with fun!</h1>
-                    <img class="right_cont_image" src="../static/assets/Studying-rafiki.png" alt="">
-                </div>
+                
             </div>
         </div>
         <script>
-            const passwordInput = document.getElementById('password');
-            const passwordBtn = document.querySelector('.passwordBtn');
-            const showPasswordIcon = passwordBtn.querySelector('.fa-eye-slash');
-            const hidePasswordIcon = passwordBtn.querySelector('.fa-eye');
-            const passwordState = localStorage.getItem('passwordState');
+const passwordInput = document.getElementById('password');
+const passwordBtn = document.querySelector('.passwordBtn');
+const showPasswordIcon = passwordBtn.querySelector('.fa-eye-slash');
+const hidePasswordIcon = passwordBtn.querySelector('.fa-eye');
+const passwordState = localStorage.getItem('passwordState');
 
-            if (passwordState === 'hidden') {
-                passwordInput.type = 'password';
-                showPasswordIcon.style.display = 'block';
-                hidePasswordIcon.style.display = 'none';
-                showPasswordIcon.classList.add('active');
-            } else {
-                passwordInput.type = 'text';
-                showPasswordIcon.style.display = 'none';
-                hidePasswordIcon.style.display = 'block';
-                hidePasswordIcon.classList.add('active');
-            }
+if (passwordState === 'visible') {
+    passwordInput.type = 'text';
+    showPasswordIcon.style.display = 'none';
+    hidePasswordIcon.style.display = 'block';
+    hidePasswordIcon.classList.add('active');
+} else {
+    passwordInput.type = 'password';
+    showPasswordIcon.style.display = 'block';
+    hidePasswordIcon.style.display = 'none';
+    showPasswordIcon.classList.add('active');
+    localStorage.setItem('passwordState', 'hidden');
+}
 
-            passwordBtn.addEventListener('click', function () {
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    showPasswordIcon.style.display = 'none';
-                    hidePasswordIcon.style.display = 'block';
-                    showPasswordIcon.classList.remove('active');
-                    hidePasswordIcon.classList.add('active');
-                    localStorage.setItem('passwordState', 'visible');
-                } else {
-                    passwordInput.type = 'password';
-                    showPasswordIcon.style.display = 'block';
-                    hidePasswordIcon.style.display = 'none';
-                    hidePasswordIcon.classList.remove('active');
-                    showPasswordIcon.classList.add('active');
-                    localStorage.setItem('passwordState', 'hidden');
-                }
-            });
+passwordBtn.addEventListener('click', function () {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        showPasswordIcon.style.display = 'none';
+        hidePasswordIcon.style.display = 'block';
+        showPasswordIcon.classList.remove('active');
+        hidePasswordIcon.classList.add('active');
+        localStorage.setItem('passwordState', 'visible');
+    } else {
+        passwordInput.type = 'password';
+        showPasswordIcon.style.display = 'block';
+        hidePasswordIcon.style.display = 'none';
+        hidePasswordIcon.classList.remove('active');
+        showPasswordIcon.classList.add('active');
+        localStorage.setItem('passwordState', 'hidden');
+    }
+});
+
 
             function redirectToLanding() {
                 window.location.href = "/";

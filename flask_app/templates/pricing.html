@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename = 'css/pricing.css')}}">
+        <script src="https://kit.fontawesome.com/e53bf076c4.js" crossorigin="anonymous"></script>
+        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+    <title>Pricing</title>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <div class="row">
+                <div class="header__left_container">
+                    <div class="header__logo">
+                        <img class="header__image_logo" src="../static/assets/logo.png" alt="" onclick="redirectToLanding()">
+                        
+                    </div>
+                </div>
+                <div class="header__right_container">
+                    {% if session['user_id'] != Null %}
+                    <button class="header__get_pro_button" onclick="redirectToPro()"><i class="fa-solid fa-crown"></i> Get Pro </button>
+                    <div class="user_greeting">{{ first_name }}</div>
+                    {% else %}
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </nav>
+    </header>
+    <div class="TwoColumnWithInput__DecoratorBlob1-sc-4exk7k-9"></div>
+    <div class="TwoColumnWithInput__DecoratorBlob1-sc-4exk7k-8"></div>
+
+
+
+
+        <div class="right_spec_cont">
+            <a href="https://buy.stripe.com/test_4gw3fi7c35fU8Wk7su"><button>Buy</button></a>
+        </div>
+
+        
+
+    <script>
+            function redirectToLanding() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
