@@ -15,6 +15,8 @@ from flask import Flask, jsonify, request, flash, url_for, redirect, session, re
 load_dotenv()
 bcrypt = Bcrypt(app)
 
+stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
+
 
 @app.template_filter()
 def urlencode(value):
@@ -40,13 +42,14 @@ def redirectroute():
     logged_in = 'user_id' in session
     first_name = None
     id = None
+    user = None
     if logged_in:
         user_id = session['user_id']
         user = User.get_one({'id': user_id})
         if user:
             first_name = user.first_name[0].upper()
             id = user.id
-    return render_template("landingPage.html", logged_in=logged_in, first_name=first_name, id=id)
+    return render_template("landingPage.html", logged_in=logged_in, first_name=first_name, id=id, user = user)
 
 
 # PROFILE PAGE
@@ -230,6 +233,7 @@ def create_customer():
     first_name.capitalize()
 
     customer = stripe.Customer.create(email=data['email'])
+    
     print("THIS IS THE CUSTOMER", customer)
 
     data['stripe_customer_id'] = customer.id
@@ -243,6 +247,7 @@ def create_customer():
     resp = redirect('/')
     resp.set_cookie('customer', customer.id)
     customer_id = request.cookies.get('customer')
+
     print("THIS IS THE CUSTOMER ID", customer_id)
 
     return resp
@@ -256,7 +261,7 @@ def webhook():
     endpoint_secret = "whsec_Y45JYq90PtTMH3FPwVLcfE4v9xrK0vvo"
     event = None
     payload = request.get_data(as_text=True)
-    # print(payload)
+    print("THIS IS THE PAYLOAD", payload)
 
     try:
         event = json.loads(payload)
@@ -281,11 +286,12 @@ def webhook():
         amount_paid = payment_intent['amount']
         print('Payment for {} succeeded'.format(amount_paid))
         print('Payment Intent ID: {}'.format(payment_intent_id))
-        print('Customer ID: {}'.format(stripe_customer_id))
-
-        data = {'stripe_customer_id':stripe_customer_id,
-                'is_paying': True}
+        print('Customer user ID: {}'.format(stripe_customer_id))
+        data = {'stripe_customer_id': stripe_customer_id,"amount_paid": amount_paid, "is_paying": True}
         User.save(data)
+        return redirect("/success")
+
+
     elif event['type'] == 'payment_method.attached':
         payment_method = event['data']['object']
     else:

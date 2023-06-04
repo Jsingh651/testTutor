@@ -16,8 +16,9 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.payment_intent_id = data['payment_intent_id']
+        # self.payment_intent_id = data['payment_intent_id']
         self.stripe_customer_id = data['stripe_customer_id']
+        self.amount_paid = data['amount_paid']
         self.is_paying = data['is_paying']
         
 
@@ -25,7 +26,7 @@ class User:
     def save(cls, data):
         query = """
         UPDATE users
-        SET is_paying = %(is_paying)s
+        SET is_paying = %(is_paying)s, amount_paid = %(amount_paid)s
         WHERE stripe_customer_id = %(stripe_customer_id)s
         """
         
