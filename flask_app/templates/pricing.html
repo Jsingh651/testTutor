@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/pricing.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'js/pricing.js')}}">
     <script src="https://kit.fontawesome.com/e53bf076c4.js" crossorigin="anonymous"></script>
     <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
     <title>Pricing</title>
@@ -40,7 +39,8 @@
                 <div class="main_basic_cont contoftwo" id="basic-plan">
                     <div class="contoftwo_section_one">
                         <h1 class="contoftwo_section_one_title">Basic</h1>
-                        <p class="contoftwo_section_one_sub_title">Ideal for those who want to learn the basics of programming. You will have a solid foundation after all crash courses.</p>
+                        <p class="contoftwo_section_one_sub_title">Ideal for those who want to learn the basics of
+                            programming. You will have a solid foundation after all crash courses.</p>
                         <h1 class="price">Free</h1>
                         <span class="month">No Cost</span>
 
@@ -59,10 +59,14 @@
                 <div class="main_premium_cont contoftwo" id="premium-plan">
                     <div class="contoftwo_section_one">
                         <h1 class="contoftwo_section_one_title">Premium</h1>
-                        <p class="contoftwo_section_one_sub_title">Ideal for those who want to fast-track their coding career. Land a developer job in under 12 months or get a full refund.</p>
-                            <h1 class="price">$38</h1>
-                            <span class="month">per month</span>
+                        <p class="contoftwo_section_one_sub_title">Ideal for those who want to fast-track their coding
+                            career. Land a developer job in under 12 months or get a full refund.</p>
+                        <h1 class="price">$38</h1>
+                        <span class="month">per month</span>
+
                         <button class="contoftwo_btn" id="checkout-button">Get Started</button>
+
+
                     </div>
                     <div class="contoftwo_section_two">
                         <h1 class="contoftwo_section_two_title">Features</h1>
@@ -82,10 +86,17 @@
                 <div class="main_advanced_cont contoftwo" id="advanced-plan">
                     <div class="contoftwo_section_one">
                         <h1 class="contoftwo_section_one_title">Advanced</h1>
-                        <p class="contoftwo_section_one_sub_title">Ideal for those who want to fast-track their coding career. Land a developer job in under 12 months or get a full refund.</p>
+                        <p class="contoftwo_section_one_sub_title">Ideal for those who want to fast-track their coding
+                            career and getting a mentor. Land a developer job in under 12 months or get a full refund.
+                        </p>
                         <h1 class="price">$70</h1>
                         <span class="month">Per Month</span>
-                        <button class="contoftwo_btn" id="advaced-button">Apply Here</button>
+
+
+
+                        <button class="contoftwo_btn" id="advanced-button">Apply Here</button>
+
+
                     </div>
                     <div class="contoftwo_section_two">
                         <h1 class="contoftwo_section_two_title">Features</h1>
@@ -114,30 +125,12 @@
 
     <script>
 
-var amountPaid = {{ user.amount_paid }}; // Replace {{ user.amount_paid }} with the actual variable holding the value
-
-// Function to apply highlighting based on 'amountPaid' value
-function applyHighlighting() {
-  if (amountPaid === 7000) {
-    document.getElementById('advaced-button').innerText = 'You Have this!';
-    document.getElementById('advaced-button').classList.add('basicbtn');
-    document.getElementById('advaced-button').disabled = true;
-
-  } else if (amountPaid === 3800) {
-    document.getElementById('checkout-button').innerText = 'You Have this!';
-    document.getElementById('checkout-button').classList.add('basicbtn');
-    document.getElementById('checkout-button').disabled = true;
 
 
-  }
-}
-
-// Call the function to apply the highlighting
-applyHighlighting();
         function redirectToLanding() {
             window.location.href = "/";
         }
-    
+
         document.getElementById('checkout-button').addEventListener('click', function () {
             fetch('/create-checkout-session', {
                 method: 'POST',
@@ -146,20 +139,20 @@ applyHighlighting();
                 },
                 body: JSON.stringify({ userId: "{{ user.id }}" }) // Pass the user ID in the request body
             })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (session) {
-                var stripe = Stripe('pk_test_51NDup2FabksylCi830zi3NH1XSTPzSgwNmldMSOZ77XMVUWQeHwvlgP4AVxz7QpbDhwyVs1S4tb52q4lOHUj2F5x00RBGQuLCP');
-                stripe.redirectToCheckout({ sessionId: session.sessionId });
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            });
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    var stripe = Stripe('pk_test_51NDup2FabksylCi830zi3NH1XSTPzSgwNmldMSOZ77XMVUWQeHwvlgP4AVxz7QpbDhwyVs1S4tb52q4lOHUj2F5x00RBGQuLCP');
+                    stripe.redirectToCheckout({ sessionId: session.sessionId });
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                });
         });
 
 
-        document.getElementById('advaced-button').addEventListener('click', function () {
+        document.getElementById('advanced-button').addEventListener('click', function () {
             fetch('/create-checkout-session/premium', {
                 method: 'POST',
                 headers: {
@@ -167,21 +160,21 @@ applyHighlighting();
                 },
                 body: JSON.stringify({ userId: "{{ user.id }}" }) // Pass the user ID in the request body
             })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (session) {
-                var stripe = Stripe('pk_test_51NDup2FabksylCi830zi3NH1XSTPzSgwNmldMSOZ77XMVUWQeHwvlgP4AVxz7QpbDhwyVs1S4tb52q4lOHUj2F5x00RBGQuLCP');
-                stripe.redirectToCheckout({ sessionId: session.sessionId });
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            });
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    var stripe = Stripe('pk_test_51NDup2FabksylCi830zi3NH1XSTPzSgwNmldMSOZ77XMVUWQeHwvlgP4AVxz7QpbDhwyVs1S4tb52q4lOHUj2F5x00RBGQuLCP');
+                    stripe.redirectToCheckout({ sessionId: session.sessionId });
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                });
         });
 
-    
+
     </script>
-    
+
 </body>
 
 </html>

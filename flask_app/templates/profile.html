@@ -56,15 +56,7 @@
                             <input class="inputhiddensubmit" id="hiddenButton" type="submit" value="submit">
                         </form>
                     </div>
-                    <!-- <div class="right_side">
-                        <button id="editButton" class="section__one_edit_btn" onclick="editEmail()">Edit</button>
-                        <div class="sub_right_side" id='sub_right_side' style="display: none;">
-                            <button id="cancelButton" class="section__one_edit_btn cancel_btn" style="display: none;"
-                                onclick="cancelEdit()">Cancel</button>
-                            <input id="submitButton" class="section__one_edit_btn submit_btn" type="submit"
-                                value="Submit" style="display: none;">
-                        </div>
-                    </div> -->
+                    
                 </div>
                 <div class="section__one_info_cont">
                     <div class="left_side">
@@ -94,7 +86,6 @@
                         <h3 class="section__one_response_text">Update your password</h3>
                     </div>
                     <div class="right_side">
-                        <!-- <button class="section__one_edit_btn" onclick="redirectToFP()">Edit</button> -->
                         <button class="section__one_edit_btn" onclick="showForm()">Edit</button>
 
                         <div id="overlay">
@@ -155,23 +146,28 @@
 
                 </div>
             </div>
-            <div class="section__one_info_cont">
+            {%if user.is_paying == 0%}
+            <div class="section__one_info_cont" id="subscription-panel">
                 <div class="left_side">
                     <h1 class="section__one_title_text">Subscription Plan</h1>
-                    <h3 class="section__one_response_text">Update your subscripiton here</h3>
+                    <h3 class="section__one_response_text">Get Pro here</h3>
                 </div>
                 <div class="right_side">
                     <button onclick="redirectToPro()" class="section__one_edit_btn biggerbtn"><i class="fa-solid fa-crown spec" ></i> Get
                         pro</button>
                 </div>
             </div>
+            {% endif %}
             <div class="section__one_info_cont">
                 <div class="left_side">
-                    <h1 class="section__one_title_text">Payment Prefrence</h1>
-                    <h3 class="section__one_response_text">Update your payment here</h3>
+                    <h1 class="section__one_title_text">Subscription Prefrence</h1>
+                    <h3 class="section__one_response_text">Manage your subscripitons here</h3>
                 </div>
                 <div class="right_side">
-                    <button class="section__one_edit_btn biggerbtn">Update</button>
+                    <form  class="hiddenform" method="POST" action="/create-customer-portal-session">
+                        <input type="hidden" name="stripe_customer_id" value="{{user.stripe_customer_id}}">
+                        <button type="submit" class="section__one_edit_btn biggerbtn">Manage</button>
+                    </form>
                 </div>
             </div>
             <div class="section__one_info_cont">
@@ -202,6 +198,7 @@
     function redirectToLanding() {
         window.location.href = "/";
     }
+        let containerToRemove = document.getElementById("subscription-panel")
 
         function showForm() {
             var overlay = document.getElementById('overlay');

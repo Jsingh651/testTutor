@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 import re
 from flask import flash
 from flask_app import app
+from datetime import datetime, timedelta
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
@@ -16,9 +17,11 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.subscription_expires_at = data['subscription_expires_at']
         # self.payment_intent_id = data['payment_intent_id']
         self.stripe_customer_id = data['stripe_customer_id']
         self.amount_paid = data['amount_paid']
+        self.plan_type = data['plan_type']
         self.is_paying = data['is_paying']
         
 
@@ -31,12 +34,40 @@ class User:
         """
         
         return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def saveSubscription(cls, data):
+        query = """
+        UPDATE users
+        SET plan_type = %(plan_type)s, subscription_expires_at = %(subscription_expires_at)s
+        WHERE stripe_customer_id = %(stripe_customer_id)s
+        """
+        
+        return connectToMySQL(db).query_db(query, data)
+
+    def update_is_paying(self):
+        current_datetime = datetime.now()
+        expiration_datetime = self.subscription_expires_at
+        if current_datetime >= expiration_datetime:
+            self.is_paying = False
+            self.amount_paid = None
+            self.plan_type = None
+            data = {
+                'is_paying': self.is_paying,
+                "amount_paid": self.amount_paid,
+                "plan_type": self.plan_type,
+                'stripe_customer_id': self.stripe_customer_id
+            }
+            self.save(data)
+
+
 
     @classmethod
     def get_all(cls):
         query = 'SELECT * FROM users'
         results = connectToMySQL(db).query_db(query)
         return [cls(row) for row in results]
+    
 
     @classmethod
     def get_one(cls, data):

@@ -15,25 +15,25 @@ def create_checkout_session():
             payment_method_types=['card'],
             line_items=[
                 {
-                    'price_data': {
-                        'currency': 'usd',
-                        'product_data': {
-                            'name': 'Sample Product',
-                            'description': 'This is the best product you will see'
-                        },
-                        'unit_amount': 3800,
-                    },
+                    # Replace with your Stripe Price ID for the monthly subscription
+                    'price': 'price_1NEP8ZFabksylCi8e5lcSdZj',
                     'quantity': 1,
                 },
             ],
-            mode='payment',
-            success_url='http://127.0.0.1:4242/success34iubbuyhgugiuBIBv2?' + user_id,  # Pass user ID as a query parameter
+            mode='subscription',
+            success_url='http://127.0.0.1:4242/success34iubbuyhgugiuBIBv2?' + \
+            user_id,  # Pass user ID as a query parameter
             cancel_url='http://127.0.0.1:4242/',
-            customer=user.stripe_customer_id
+            customer=user.stripe_customer_id,
+            metadata = {
+                        'selected_product': 'premium38'
+                    }
         )
+
         return jsonify({'sessionId': session.id})
     else:
         return jsonify({'error': 'User not found'})
+
 
 @app.route('/success34iubbuyhgugiuBIBv2', methods=['GET'])
 def succcesss():
@@ -49,22 +49,20 @@ def create_checkout_sessionadvanced():
             payment_method_types=['card'],
             line_items=[
                 {
-                    'price_data': {
-                        'currency': 'usd',
-                        'product_data': {
-                            'name': 'Advanced Product',
-                            'description': 'This is the best product you will see'
-                        },
-                        'unit_amount': 7000,
-                    },
+                    'price': 'price_1NEP9zFabksylCi8BHQMlGme',
                     'quantity': 1,
                 },
             ],
-            mode='payment',
-            success_url='http://127.0.0.1:4242/success34iubbuyhgugiuBIBv2?' + user_id,  # Pass user ID as a query parameter
+            mode='subscription',
+            success_url='http://127.0.0.1:4242/success34iubbuyhgugiuBIBv2?' +
+            user_id,
             cancel_url='http://127.0.0.1:4242/',
-            customer=user.stripe_customer_id
+            customer=user.stripe_customer_id,
+            metadata = {
+                        'selected_product': 'premium70'
+                    }
         )
+
         return jsonify({'sessionId': session.id})
     else:
         return jsonify({'error': 'User not found'})

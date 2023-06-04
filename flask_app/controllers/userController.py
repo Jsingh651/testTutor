@@ -49,7 +49,7 @@ def redirectroute():
         if user:
             first_name = user.first_name[0].upper()
             id = user.id
-    return render_template("landingPage.html", logged_in=logged_in, first_name=first_name, id=id, user = user)
+    return render_template("landingPage.html", logged_in=logged_in, first_name=first_name, id=id, user=user)
 
 
 # PROFILE PAGE
@@ -59,9 +59,26 @@ def profilePage(id):
         return redirect("/")
     data = {'id': id}
     user = User.get_one(data)
+    # coustmer_id = user.stripe_customer_id
+    # sessions = stripe.billing_portal.Session.create(
+    #     customer= coustmer_id,
+    #     return_url='http://localhost:4242/',
+    # )
+    # portal_url = sessions.url
     first_name = user.first_name[0].upper()
     reset_success = session.pop('reset_success', None)
     return render_template('profile.html', user=user, first_name=first_name, reset_success=reset_success, id=id)
+
+
+# @app.route('/create-customer-portal-session', methods=['POST'])
+# def customer_portal():
+#     # Authenticate your user.
+#     stripe_customer_id = request.form['stripe_customer_id']
+#     session = stripe.billing_portal.Session.create(
+#         customer=stripe_customer_id,
+#         return_url='http://127.0.0.1:4242/',
+#     )
+#     return redirect(session.url)
 
 
 # FORGOT PASSWORD PAGE
@@ -133,15 +150,11 @@ def updateName():
 #     }
 #     first_name = request.form['first_name']
 #     first_name.capitalize()
-    
+
 #     id = User.register(data)
 #     session['user_id'] = id
 #     session['username'] = data['first_name']
 #     return redirect("/")
-
-    
-
-
 
 
 @app.route('/login/user', methods=['POST'])
@@ -177,12 +190,13 @@ def forgotPasswordFormlogin():
         token = ts.dumps(email, salt='recover-key')
         reset_link = url_for('newPassword', token=token, _external=True)
         html = render_template('reset_email.html', reset_link=reset_link)
-        msg = Message('Password Reset Request', sender='noreply@domain', recipients=[email])
+        msg = Message('Password Reset Request',
+                      sender='noreply@domain', recipients=[email])
         msg.html = html
         mail.send(msg)
-        session['reset_success'] = True  
+        session['reset_success'] = True
     else:
-        session['reset_success'] = False  
+        session['reset_success'] = False
     return redirect('/login')
 
 
@@ -203,15 +217,14 @@ def forgotPasswordForm():
         reset_link = url_for('newPassword', token=token, _external=True)
         html_content = render_template(
             'reset_email.html', reset_link=reset_link)
-        msg = Message('Password Reset Request', sender='noreply@domain', recipients=[email])
+        msg = Message('Password Reset Request',
+                      sender='noreply@domain', recipients=[email])
         msg.html = html_content
         mail.send(msg)
-        session['reset_success'] = True 
+        session['reset_success'] = True
     else:
-        session['reset_success'] = False 
+        session['reset_success'] = False
     return redirect('/profile/page/9090u343109uu43438041292409313/3243/prof/' + id)
-
-
 
 
 @app.route('/create-customer', methods=['POST'])
@@ -233,7 +246,7 @@ def create_customer():
     first_name.capitalize()
 
     customer = stripe.Customer.create(email=data['email'])
-    
+
     print("THIS IS THE CUSTOMER", customer)
 
     data['stripe_customer_id'] = customer.id
@@ -251,8 +264,15 @@ def create_customer():
     print("THIS IS THE CUSTOMER ID", customer_id)
 
     return resp
+
+
 stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
 endpoint_secret = "whsec_Y45JYq90PtTMH3FPwVLcfE4v9xrK0vvo"
+
+from datetime import datetime, timedelta
+
+stripe.api_key = 'sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i'
+
 
 
 @app.route('/webhook', methods=['POST'], provide_automatic_options=False)
@@ -277,7 +297,6 @@ def webhook():
         except stripe.error.SignatureVerificationError as e:
             print('⚠️  Webhook signature verification failed.' + str(e))
             return jsonify(success=False)
-        
 
     if event and event['type'] == 'payment_intent.succeeded':
         payment_intent = event['data']['object']
@@ -287,31 +306,60 @@ def webhook():
         print('Payment for {} succeeded'.format(amount_paid))
         print('Payment Intent ID: {}'.format(payment_intent_id))
         print('Customer user ID: {}'.format(stripe_customer_id))
-        data = {'stripe_customer_id': stripe_customer_id,"amount_paid": amount_paid, "is_paying": True}
+        data = {'stripe_customer_id': stripe_customer_id,
+                "amount_paid": amount_paid, "is_paying": True}
         User.save(data)
-        return redirect("/success")
 
+    if event and event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        session_id = session['id']
+        customer_id = session['customer']
+        amount_total = session['amount_total']
+        selected_product = session['metadata'].get('selected_product')
+
+        print('Payment for {} succeeded'.format(amount_total))
+        print('Checkout Session ID: {}'.format(session_id))
+        print('Customer user ID: {}'.format(customer_id))
+        print('Selected Product: {}'.format(selected_product))
+
+        data = {'stripe_customer_id': customer_id,
+                "plan_type": selected_product}
+        User.saveSubscription(data)
+
+
+    if event and event['type'] == 'customer.subscription.updated':
+        subscription = event['data']['object']
+        customer_id = subscription['customer']
+        new_plan_type = subscription['items']['data'][0]['plan']['id']
+        cancel_at = subscription['cancel_at']
+
+        if cancel_at:
+            cancellation_date = datetime.fromtimestamp(cancel_at)
+            data = {'stripe_customer_id': customer_id, "plan_type": new_plan_type, "subscription_expires_at": cancellation_date}
+            User.saveSubscription(data)
+        else:
+            data = {'stripe_customer_id': customer_id, "plan_type": new_plan_type, "subscription_expires_at": None}
+            User.saveSubscription(data)
+
+
+    #     # return redirect("/success")
 
     elif event['type'] == 'payment_method.attached':
         payment_method = event['data']['object']
     else:
         print('Unhandled event type {}'.format(event['type']))
 
-    
     return jsonify(success=True)
 
 
-
-@app.route("/payment/sucesfull/point/vdewfeerh234nj98h4jnjd20najbiu421412")
-def success():
-    user_id = session.get('user_id')
-    if not user_id:
-        return redirect('/login')
-
-    data = {'id': user_id, 'is_paying': True}
-    User.update(data)
-
-    return redirect('/profile/page/9090u343109uu43438041292409313/3243/prof/' + str(user_id))
-
+@app.route('/create-customer-portal-session', methods=['POST'])
+def customer_portal():
+    # Authenticate your user.
+    stripe_customer_id = request.form['stripe_customer_id']
+    session = stripe.billing_portal.Session.create(
+        customer=stripe_customer_id,
+        return_url='http://127.0.0.1:4242/',
+    )
+    return redirect(session.url)
 
 
