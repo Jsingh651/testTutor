@@ -840,3 +840,54 @@ form {
 }
 
 
+@media(max-width: 700px){
+    .email__login{
+        border-radius: 0;
+    }
+    .left_contianer{
+        padding-left: 30px;
+    }
+    .form_input_d{
+        width: 120px;
+        border-radius: 0;
+    }
+    .section__one_profile_row{
+        padding: 10px 18px;
+    }
+    .header__left_container{
+        margin-left: 0;
+    }
+    .header__right_container{
+        margin-right: 0;
+    }
+    .logout_btn{
+        width: 100px;
+    }
+    .last{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    .user_greeting{
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .section__one_main_title{
+        font-size: 2rem;
+        padding-bottom: 20px;
+    }
+    .section__one_info_cont{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .section__one_response_text{
+        padding: 0 0 20px 0;
+        font-size: 16px;
+    }
+    .section__one_title_text{
+        padding-top: 12px;
+    }
+}

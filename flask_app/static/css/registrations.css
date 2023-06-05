@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
 }
 .row {
     width: 100%;
-    max-width: 1600px;
+    max-width: 3000px;
     margin: 0 auto;
 }
 
@@ -250,7 +250,8 @@ input {
     display: block;
 }
 
-
+.specialformleft{
+}
 
 
 @media(max-width:1050px) {
@@ -403,7 +404,7 @@ input {
         justify-content: center;
         align-items: center;
         padding: 0;
-        margin-top: 100px;
+        margin-top: 50px;
         width: default;
         border: 0;
         border-radius: 0;
@@ -416,8 +417,15 @@ input {
 
     form {
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
+    .form_submit_button{
+        margin: 0 auto;
+        margin-top: 20px;
+    }
     .login_button {
         margin: 0 auto;
         margin-top: 24px;
@@ -426,5 +434,25 @@ input {
     .header__image_logo {
         margin-top: 0;
     }
+    .right_container__login__link{
+        text-align: center;
+        margin-top: 24px;
+    }
+    input{
+        border-radius: 0px;
+    }
 
+}
+
+@media(max-width: 450px){
+    .header__image_logo {
+        margin-top: 0;
+        width: 300px;
+    }
+
+    .left_contianer {
+       
+        margin-top: 30px;
+       
+    }
 }

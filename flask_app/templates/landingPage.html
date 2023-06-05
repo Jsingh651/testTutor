@@ -27,10 +27,9 @@
                 <div class="header__right_container">
                     {% if session['user_id'] != Null %}
                     {% if user.is_paying %}
-                    <button class="header__begin_course_button" onclick="beginCourse()">Begin Course</button>
+                    <button class="header__get_pro_button" onclick="beginCourse()">Begin Course</button>
                     {% else %}
-                    <button class="header__get_pro_button" onclick="redirectToPro()"><i class="fa-solid fa-crown"></i>
-                        Get Pro</button>
+                    <button class="header__get_pro_button" onclick="redirectToPro()"><i class="fa-solid fa-crown"></i>Get Pro</button>
                     {% endif %}
                     <div class="user_greeting" onclick="redirectToProfile()">{{ first_name }}</div>
                     {% else %}
@@ -487,7 +486,7 @@
                     <p class="section__five_text">With our job guarantee program, you can invest in your career without
                         any worry of not seeing a return. We are certain that our curriculum and coaching will result in
                         you landing a developer job within one year, so much so that we offer a full refund if this does
-                        not occur. Invest with confidence in yourself and your career at our job guarantee program!
+                        not occur. Invest with confidence in yourself and your career at our job guarantee program!</p>
 
                         {% if session['user_id'] != Null %}
                         <button class="section__one_button section__five_button"
@@ -570,7 +569,7 @@
                     <h1 class="footer_one_sub_title"><a href="">Contact Us</a></h1>
                 </div>
                 <div class="footer__main_one">
-                    <h1 class="footer_one_title">Crash Courses</h1>
+                    <h1 class="footer_one_title">Courses</h1>
                     <h1 class="footer_one_sub_title"><a href="">HTML</a></h1>
                     <h1 class="footer_one_sub_title"><a href="">CSS</a></h1>
                     <h1 class="footer_one_sub_title"><a href="">Javascript</a></h1>
@@ -650,6 +649,9 @@
             dropdown.classList.toggle("show");
         }
 
+        function redirectToPro() {
+            window.location.href = "/pricing/{{id}}";
+        }
 
 
     </script>
