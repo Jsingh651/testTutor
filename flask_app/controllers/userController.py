@@ -10,12 +10,15 @@ from flask_app.models.users import User
 from itsdangerous import URLSafeTimedSerializer
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
-from flask import Flask, jsonify, request, flash, url_for, redirect, session, render_template, Markup
+from flask import Flask, jsonify, request, flash, url_for, redirect, session, render_template, Markup, request
+stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
+endpoint_secret = "whsec_Y45JYq90PtTMH3FPwVLcfE4v9xrK0vvo"
+from datetime import datetime, timedelta
 
 load_dotenv()
 bcrypt = Bcrypt(app)
 
-stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
+# stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
 
 
 @app.template_filter()
@@ -59,26 +62,11 @@ def profilePage(id):
         return redirect("/")
     data = {'id': id}
     user = User.get_one(data)
-    # coustmer_id = user.stripe_customer_id
-    # sessions = stripe.billing_portal.Session.create(
-    #     customer= coustmer_id,
-    #     return_url='http://localhost:4242/',
-    # )
-    # portal_url = sessions.url
     first_name = user.first_name[0].upper()
     reset_success = session.pop('reset_success', None)
     return render_template('profile.html', user=user, first_name=first_name, reset_success=reset_success, id=id)
 
 
-# @app.route('/create-customer-portal-session', methods=['POST'])
-# def customer_portal():
-#     # Authenticate your user.
-#     stripe_customer_id = request.form['stripe_customer_id']
-#     session = stripe.billing_portal.Session.create(
-#         customer=stripe_customer_id,
-#         return_url='http://127.0.0.1:4242/',
-#     )
-#     return redirect(session.url)
 
 
 # FORGOT PASSWORD PAGE
@@ -111,7 +99,7 @@ def newPassword(token):
 
 # PRICING PAGE
 @app.route("/pricing/<int:id>")
-def priing(id):
+def pricing(id):
     if not session:
         return redirect('/')
     data = {'id': id}
@@ -130,31 +118,9 @@ def updateEmail():
 @app.route("/update/name", methods=['POST'])
 def updateName():
     id = request.form['id']
-    User.updatename(request.form)
+    data = {"id": id, "first_name": request.form['first_name']}
+    User.updatename(data)
     return redirect('/profile/page/9090u343109uu43438041292409313/3243/prof/'+id)
-
-# @app.route('/register', methods=['POST'])
-# def registerr():
-#     if not User.validate(request.form):
-#         session['first_name'] = request.form['first_name']
-#         session['last_name'] = request.form['last_name']
-#         session['email'] = request.form['email']
-#         return redirect('/register')
-
-#     pw_hash = bcrypt.generate_password_hash(request.form['password'])
-#     data = {
-#         'first_name': request.form['first_name'],
-#         'last_name': request.form['last_name'],
-#         'email': request.form['email'],
-#         'password': pw_hash
-#     }
-#     first_name = request.form['first_name']
-#     first_name.capitalize()
-
-#     id = User.register(data)
-#     session['user_id'] = id
-#     session['username'] = data['first_name']
-#     return redirect("/")
 
 
 @app.route('/login/user', methods=['POST'])
@@ -190,8 +156,7 @@ def forgotPasswordFormlogin():
         token = ts.dumps(email, salt='recover-key')
         reset_link = url_for('newPassword', token=token, _external=True)
         html = render_template('reset_email.html', reset_link=reset_link)
-        msg = Message('Password Reset Request',
-                      sender='noreply@domain', recipients=[email])
+        msg = Message('Password Reset Request', sender='noreply@domain', recipients=[email])
         msg.html = html
         mail.send(msg)
         session['reset_success'] = True
@@ -217,8 +182,7 @@ def forgotPasswordForm():
         reset_link = url_for('newPassword', token=token, _external=True)
         html_content = render_template(
             'reset_email.html', reset_link=reset_link)
-        msg = Message('Password Reset Request',
-                      sender='noreply@domain', recipients=[email])
+        msg = Message('Password Reset Request',sender='noreply@domain', recipients=[email])
         msg.html = html_content
         mail.send(msg)
         session['reset_success'] = True
@@ -244,13 +208,9 @@ def create_customer():
     }
     first_name = request.form['first_name']
     first_name.capitalize()
-
     customer = stripe.Customer.create(email=data['email'])
 
-    print("THIS IS THE CUSTOMER", customer)
-
     data['stripe_customer_id'] = customer.id
-    print("THIS IS THE stripe_customer_id", data['stripe_customer_id'])
 
     id = User.register(data)
 
@@ -260,18 +220,8 @@ def create_customer():
     resp = redirect('/')
     resp.set_cookie('customer', customer.id)
     customer_id = request.cookies.get('customer')
-
     print("THIS IS THE CUSTOMER ID", customer_id)
-
     return resp
-
-
-stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
-endpoint_secret = "whsec_Y45JYq90PtTMH3FPwVLcfE4v9xrK0vvo"
-
-from datetime import datetime, timedelta
-
-stripe.api_key = 'sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i'
 
 
 
@@ -340,12 +290,10 @@ def webhook():
         else:
             data = {'stripe_customer_id': customer_id, "plan_type": new_plan_type, "subscription_expires_at": None}
             User.saveSubscription(data)
-
-
     #     # return redirect("/success")
 
-    elif event['type'] == 'payment_method.attached':
-        payment_method = event['data']['object']
+    # elif event['type'] == 'payment_method.attached':
+    #     payment_method = event['data']['object']
     else:
         print('Unhandled event type {}'.format(event['type']))
 

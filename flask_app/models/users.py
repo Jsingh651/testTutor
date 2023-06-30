@@ -82,7 +82,7 @@ class User:
         query = '''
         INSERT INTO users
         (first_name, last_name, email, password,stripe_customer_id, created_at) 
-        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s,%(stripe_customer_id)s,  NOW());
+        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(stripe_customer_id)s,  NOW());
         '''
         return connectToMySQL(db).query_db(query, data)
 
@@ -98,7 +98,7 @@ class User:
     
     @classmethod
     def updatename(cls, data):
-        query = 'UPDATE users SET first_name = %(first_name)s'
+        query = 'UPDATE users SET first_name = %(first_name)s WHERE id = %(id)s'
         return connectToMySQL(db).query_db(query, data)
     
     @classmethod

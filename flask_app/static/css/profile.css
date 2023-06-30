@@ -409,7 +409,7 @@ form {
 
 .login_button:hover {
     background-color: transparent;
-    border:  rgb(39, 89, 255);
+    border: 1px solid  rgb(39, 89, 255);
     color:  rgb(39, 89, 255);
 }
 

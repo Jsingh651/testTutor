@@ -11,6 +11,8 @@
     <script src="../static/js/landingPage.js" defer></script>
 
     <title>Frontend tutor</title>
+    <!-- <link rel="icon" href="../static/assets/amazon.png" type="image/png"> -->
+
 </head>
 
 <body>
@@ -29,7 +31,8 @@
                     {% if user.is_paying %}
                     <button class="header__get_pro_button" onclick="beginCourse()">Begin Course</button>
                     {% else %}
-                    <button class="header__get_pro_button" onclick="redirectToPro()"><i class="fa-solid fa-crown"></i>Get Pro</button>
+                    <button class="header__get_pro_button" onclick="redirectToPro()"><i
+                            class="fa-solid fa-crown"></i>Get Pro</button>
                     {% endif %}
                     <div class="user_greeting" onclick="redirectToProfile()">{{ first_name }}</div>
                     {% else %}
@@ -47,11 +50,12 @@
 
     <div class="overlay"></div>
     <div id="main">
-        <div class="TwoColumnWithInput__DecoratorBlob1-sc-4exk7k-8"></div>
+        <!-- <div class="TwoColumnWithInput__DecoratorBlob1-sc-4exk7k-8"></div> -->
+     <svg class="svg" id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> <defs> <linearGradient class="svg" id="sw-gradient" x1="0" x2="1" y1="1" y2="0">                            <stop id="stop1" stop-color="rgba(33, 74, 255, 1)" offset="0%"></stop>                            <stop id="stop2" stop-color="rgba(48.319, 86.49, 255, 1)" offset="100%"></stop>                        </linearGradient>                    </defs>                <path fill="url(#sw-gradient)" d="M26.3,-24.9C30.5,-15.6,28,-4.9,26,6.7C23.9,18.4,22.4,30.9,15.9,34.8C9.3,38.7,-2.3,33.9,-10,27.5C-17.6,21.2,-21.2,13.5,-23.5,4.9C-25.8,-3.6,-26.8,-12.9,-22.6,-22.1C-18.5,-31.3,-9.2,-40.5,0.9,-41.2C11,-42,22,-34.2,26.3,-24.9Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s;" stroke="url(#sw-gradient)"></path>              </svg>
         <section class="section__one">
             <div class="section__one_row">
                 <div class="section__one_left_container">
-                    <h1 class="section__one_title">Fast-track Your Coding Journey to 6-Figures in Under <span
+                    <h1 class="section__one_title spectititle">Fast-track Your Coding Journey to 6-Figures in Under <span
                             class="colored_text bold"> 8 Weeks!</span></h1>
 
                     <div class="section__one_left_container_list">
@@ -71,6 +75,7 @@
                     <div class="divider">
                         {% if session['user_id'] != Null %}
                         <button class="section__one_button" onclick="redirectToRegister()">Continue</button>
+                        <!-- <a href="" class="section__one_disclaimer">(No credit card required)</a> -->
                         {% else %}
                         <button class="section__one_button" onclick="redirectToRegister()">Get started</button>
                         <a href="" class="section__one_disclaimer">(No credit card required)</a>
@@ -84,41 +89,92 @@
                 </section>
             </div>
             <div class="section__one_logo_title">
-                <h3>Big tech hires our grads.</h3>
+                <h3 class="section__one_logo_title_e">Incease your chances for oppurtunities at</h3>
             </div>
             <div class="section__one_logos">
+                
                 <img src="../static/assets/amazon.png" alt="" class="section__one_logo">
                 <img src="../static/assets/google.png" alt="" class="section__one_logo">
                 <img src="../static/assets/Microsoft.png" alt="" class="section__one_logo">
                 <img src="../static/assets/tesla.png" alt="" class="section__one_logo">
             </div>
         </section>
-        <section class="section__one_five">
-            <div class="section__one_five_row">
-                <div class="section__one_five_main">
-                    <div class="num_of_students">
-                        <h1 class="number_of">7,912</h1>
-                        <h1 class="number_of_text">Students enrolled</h1>
-                    </div>
-                    <div class="average_ratings">
-                        <div class="stars_rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+
+        <section class="section__testt">
+            <div class="section__testt_row">
+                <div class="section__testt_main_test">
+                    <div class="section__testt_box card_11">
+                        <div class="card_content">
+    
+                            <h1 class="number_section_text"><span class="number_section_test">1</span>Fresh Start</h1>
+                            <div class="section_test_box_main">
+                                <div class="section_test_box_left">
+                                    <img src="../static/assets/freshstart.svg" alt="" class="section_test_img imgsection1test">
+                                </div>
+                                <div class="section_test_box_right">
+                                    <h1 class="seciton_test_main_title">Embrace a Fresh Start in Your Career</h1>
+                                    <p class="section_test_main_para">Don't let the feeling of being trapped in an unfulfilling career consume you any longer. It's time to break free from the monotony and turn the page to a brand-new chapter in your professional life.</p>
+                                </div>
                         </div>
-                        <h1 class="number_of_avg_rating">4.8 Average rating</h1>
+                        </div>
                     </div>
-                    <div class="average_salary">
-                        <h1 class="number_of_avg_salary">$108,408<span class="span_star">*</span></h1>
-                        <h1 class="salary_text">Average grad salary</h1>
+                    <div class="section__testt_box card_12">
+                        <div class="card_content">
+                        <h1 class="number_section_text"><span class="number_section_test">2</span>Structured Steps</h1>
+                        <div class="section_test_box_main">
+                            <div class="section_test_box_right">
+                                <h1 class="seciton_test_main_title">Stay Engaged and Motivated</h1>
+                                <p class="section_test_main_para">
+                                    Never feel lost or overwhelmed again. We will guide you every step of the way. Start your journey towards becoming a frontend developer today with Simplified!</p>
+                            </div>
+                            <div class="section_test_box_left">
+                                <img src="../static/assets/steps.svg" alt="" class="section_test_img rightsideimg">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="section__testt_box card_13">
+                        <div class="card_content">
+                            <h1 class="number_section_text"><span class="number_section_test">3</span>Practice and Theory</h1>
+                            <div class="section_test_box_main">
+                                <div class="section_test_box_left">
+                                    <img src="../static/assets/practice1.svg" alt="" class="section_test_img leftsideimg">
+                                </div>
+                                <div class="section_test_box_right">
+                                    <h1 class="seciton_test_main_title">Balanced approach to learning</h1>
+                                    <p class="section_test_main_para">
+                                        Our program combines structured learning modules with hands-on practical exercises. We understand that theory is important, but it's the practice that makes all the difference.</p>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section__testt_box card_14">
+                        <div class="card_content">
+    
+                            <h1 class="number_section_text"><span class="number_section_test">4</span>Key to Succeding</h1>
+                            <div class="section_test_box_main main_right_box">
+                                <div class="section_test_box_right">
+                                    <h1 class="seciton_test_main_title">Patience and accountabilty </h1>
+                                    <p class="section_test_main_para">
+                                        As a student success requires patience, dedication, and a supportive community. When you join our community, you'll have access to resources, support, and accountability to help you stay focused and achieve your goals.</p>
+                                        <button class="section_main_button_test">Join Now</button>
+    
+                                </div>
+                                <div class="section_test_box_left">
+                                    <img src="../static/assets/patience.svg" alt="" class="section_test_img rightsideimg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section__testt_box card_15">
+                        <h1 class="number_section_test">5</h1>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section__two">
+        <!-- <section class="section__two">
             <div class="section__two_row">
                 <h1 class="section__two_title ttl">Easiest way to learn and <span
                         class="colored_text bold">succeed.</span>
@@ -154,7 +210,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section class="section__three">
             <div class="section__three_row">
@@ -179,9 +235,9 @@
                             </div>
                             <div class="div2">
                                 <img src="../static/assets/javascriptLogo.png" alt=""
-                                    class="section__three_content_right_logo">
+                                    class="section__three_content_right_logo jslogosmall">
                                 <img src="../static/assets/reactLogo.png" alt=""
-                                    class="section__three_content_right_logo _1 _spec">
+                                    class="section__three_content_right_logo invertedpic _1 _spec">
                             </div>
                         </div>
                     </div>
@@ -189,14 +245,14 @@
 
                         <div class="section__three_week1">
                             <details>
-                                <summary id="leftWeek1"> <span class="week_num">#0</span> Seamless Onboarding
+                                <summary id="leftWeek1" class="sumrtag"> <span class="week_num">#0</span> Seamless Onboarding
                                 </summary>
                                 <p class="collapsed_p">Achieve the status of a top 1% engineer in record time by
                                     overcoming procrastination and lack of motivation. Learn how to maximise your coding
                                     efficiency for optimal results.</p>
                             </details>
                             <details>
-                                <summary id="leftWeek2"> <span class="week_num">#1</span> Master HTML & CSS with Ease
+                                <summary id="leftWeek2" class="sumrtag"> <span class="week_num">#1</span> Master HTML & CSS with Ease
                                 </summary>
                                 <p class="collapsed_p">Gain a strong foundation in web development by mastering HTML and
                                     CSS, the building blocks of the web. Learn to create visually appealing and
@@ -204,7 +260,7 @@
                                 </p>
                             </details>
                             <details>
-                                <summary id="leftWeek3"> <span class="week_num">#2</span> Create Four Remarkable
+                                <summary id="leftWeek3" class="sumrtag"> <span class="week_num">#2</span> Create Four Remarkable
                                     Projects
 
                                 </summary>
@@ -213,13 +269,13 @@
                                     demonstrating your ability to work with various technologies and tools.</p>
                             </details>
                             <details>
-                                <summary id="leftWeek4"> <span class="week_num">#3</span>Deploying your website online
+                                <summary id="leftWeek4" class="sumrtag"> <span class="week_num">#3</span>Deploying your website online
                                 </summary>
                                 <p class="collapsed_p"> Leverage your skills and expertise to create professional
                                     websites and deploy them online for the world to see.</p>
                             </details>
                             <details>
-                                <summary id="leftWeek5"> <span class="week_num">#4</span> Sharpen Your JavaScript Skills
+                                <summary id="leftWeek5" class="sumrtag"> <span class="week_num">#4</span> Sharpen Your JavaScript Skills
 
                                 </summary>
                                 <p class="collapsed_p">Dive into the world of JavaScript, the programming language that
@@ -227,14 +283,14 @@
                                     projects to reinforce your understanding of this versatile language.</p>
                             </details>
                             <details>
-                                <summary id="leftWeek6"> <span class="week_num">#5</span> Unlock the Power of React
+                                <summary id="leftWeek6" class="sumrtag"> <span class="week_num">#5</span> Unlock the Power of React
                                 </summary>
                                 <p class="collapsed_p">Master React, a powerful JavaScript library for building user
                                     interfaces. Gain an in-depth understanding of components, state management, and
                                     React hooks, and learn to create modern, scalable web applications.</p>
                             </details>
                             <details>
-                                <summary id="leftWeek7"> <span class="week_num">#6</span> Become a Frontend Specialist
+                                <summary id="leftWeek7" class="sumrtag"> <span class="week_num">#6</span> Become a Frontend Specialist
                                 </summary>
                                 <p class="collapsed_p">Become a frontend specialist by learning advanced techniques and
                                     tools for creating engaging, interactive, and high-performance web applications.
@@ -242,14 +298,14 @@
                                 </p>
                             </details>
                             <details>
-                                <summary id="leftWeek8"> <span class="week_num">#7</span> Ace Your Interview Practice
+                                <summary id="leftWeek8" class="sumrtag"> <span class="week_num">#7</span> Ace Your Interview Practice
                                 </summary>
                                 <p class="collapsed_p">Prepare for your job search by participating in mock interviews
                                     and practicing common technical questions. Learn how to present your skills and
                                     experience effectively, and develop strategies to ace any interview.</p>
                             </details>
                             <details>
-                                <summary id="leftWeek9"> <span class="week_num">#8</span> Secure your dream job
+                                <summary id="leftWeek9" class="sumrtag"> <span class="week_num">#8</span> Secure your dream job
                                 </summary>
                                 <p class="collapsed_p">Put your skills to work by landing a rewarding job in the web
                                     development industry. Receive guidance on resume-building, networking, and job
@@ -271,8 +327,8 @@
                                                 Start
                                                 here</summary>
                                             <h3 class="week_summary">Introduction</h3>
-                                            <h1 class="week_item">Course Introduction</h1>
                                             <h1 class="week_item">Mindset and motivation</h1>
+                                            <h1 class="week_item">Course Introduction</h1>
                                             <h3 class="week_summary">Setup</h3>
                                             <h1 class="week_item">Enviorment Setup</h1>
 
@@ -385,6 +441,30 @@
 
     </div>
     </section>
+    <section class="section__one_five">
+        <div class="section__one_five_row">
+            <div class="section__one_five_main">
+                <div class="num_of_students">
+                    <h1 class="number_of">0000</h1>
+                    <h1 class="number_of_text">Students enrolled</h1>
+                </div>
+                <div class="average_ratings">
+                    <div class="stars_rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h1 class="number_of_avg_rating">5.0 Average rating</h1>
+                </div>
+                <div class="average_salary">
+                    <h1 class="number_of_avg_salary">$000,000<span class="span_star">*</span></h1>
+                    <h1 class="salary_text">Average grad salary</h1>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="section__four">
         <div class="section__four_row">
             <h1 class="section__four_title ttl">What are others saying?</h1>
@@ -394,9 +474,8 @@
                 <div class="one_review">
                     <i class="fa-solid fa-quote-left"></i>
                     <div class="one_review_main">
-                        <p class="text_review">The course is absolutely brilliant, if you hesitating right now I'm
-                            telling you, you will get results if you put in the time, whether it be 30 mins, 1 hour, 2
-                            hours, just make sure you put that time in.</p>
+                        <!-- <p class="text_review">The course is absolutely brilliant, if you hesitating right now I'm telling you, you will get results if you put in the time, whether it be 30 mins, 1 hour, 2 hours, just make sure you put that time in.</p> -->
+                        <p class="text_review">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, iure, cum quo ab quasi facilis voluptate assumenda unde sunt iste autem, consequuntur laudantium recusandae aspernatur alias distinctio? Repudiandae, sed facere!</p>
                         <div class="review_main_low">
                             <img alt="" src="../static/assets/abdi.15aed54.png" class="profile_review_img">
                             <div class="second_low">
@@ -416,8 +495,8 @@
                 <div class="one_review">
                     <i class="fa-solid fa-quote-left"></i>
                     <div class="one_review_main">
-                        <p class="text_review">Went from going into my first year of uni not knowing what I wanted to
-                            do, to landing my first junior web developer job.</p>
+                        <p class="text_review">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, iure, cum quo ab quasi facilis voluptate assumenda unde sunt iste autem, consequuntur laudantium recusandae aspernatur alias distinctio? Repudiandae, sed facere!</p>
+
                         <div class="review_main_low">
                             <img alt="" src="../static/assets/ethan_gonsalves.66c0b68.png" class="profile_review_img">
                             <div class="second_low">
@@ -435,8 +514,8 @@
                 <div class="one_review main_review_second">
                     <i class="fa-solid fa-quote-left"></i>
                     <div class="one_review_main">
-                        <p class="text_review">It's been 6 months since I started learning front-end development, and I
-                            got hired yesterday at a digital agency as a front-end developer.</p>
+                        <p class="text_review">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, iure, cum quo ab quasi facilis voluptate assumenda unde sunt iste autem, consequuntur laudantium recusandae aspernatur alias distinctio? Repudiandae, sed facere!</p>
+
                         <div class="review_main_low">
                             <img alt="" src="../static/assets/iman.80f689d.png" class="profile_review_img">
                             <div class="second_low">
@@ -457,8 +536,8 @@
                 <div class="one_review main_review_second">
                     <i class="fa-solid fa-quote-left"></i>
                     <div class="one_review_main">
-                        <p class="text_review">This course is initially designed at a beginner level, and then
-                            progresses into more exciting and complex topics once you become more confident.</p>
+                        <p class="text_review">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, iure, cum quo ab quasi facilis voluptate assumenda unde sunt iste autem, consequuntur laudantium recusandae aspernatur alias distinctio? Repudiandae, sed facere!</p>
+
                         <div class="review_main_low">
                             <img alt="" src="../static/assets/mohamed.4ebc6b6.png" class="profile_review_img">
                             <div class="second_low">
@@ -488,14 +567,14 @@
                         you landing a developer job within one year, so much so that we offer a full refund if this does
                         not occur. Invest with confidence in yourself and your career at our job guarantee program!</p>
 
-                        {% if session['user_id'] != Null %}
-                        <button class="section__one_button section__five_button"
-                            onclick="redirectToRegister()">Continue</button>
+                    {% if session['user_id'] != Null %}
+                    <button class="section__one_button section__five_button"
+                        onclick="redirectToRegister()">Continue</button>
 
-                        {% else %}
-                        <button class="section__one_button section__five_button" onclick="redirectToRegister()">Start
-                            for free</button>
-                        {% endif %}
+                    {% else %}
+                    <button class="section__one_button section__five_button" onclick="redirectToRegister()">Start
+                        for free</button>
+                    {% endif %}
 
 
                 </div>
@@ -512,20 +591,20 @@
             <!-- <div class="section_sub_line"></div> -->
             <div class="section__six_week1">
                 <details class="details_faq">
-                    <summary class="summary_faq"> <span class="week_num">0</span> Who is Frontend Tutor for?</summary>
+                    <summary class="summary_faq sumrtag sumrtag2"> <span class="week_num">0</span> Who is Frontend Tutor for?</summary>
                     <p class="collapsed_p">Frontend Tutor is for anyone who wants to become a professional frontend
                         developer by learning the most in-demand coding skills fast. This is for you if you want to
                         start a career in the tech industry or simply if you want to learn to code from scratch and
                         develop impressive coding skills in record time.</p>
                 </details>
                 <details class="details_faq">
-                    <summary class="summary_faq"> <span class="week_num">1</span> Do I need prior knowledge?</summary>
+                    <summary class="summary_faq sumrtag sumrtag2"> <span class="week_num">1</span> Do I need prior knowledge?</summary>
                     <p class="collapsed_p">No, you do NOT need prior knowledge in order to join the Frontend Simplified
                         bootcamp. Our training is specifically designed to take you from a complete beginner to land a
                         high paying job in 8 weeks.</p>
                 </details>
                 <details class="details_faq">
-                    <summary class="summary_faq"> <span class="week_num">2</span> What skill level is this program for?
+                    <summary class="summary_faq sumrtag sumrtag2"> <span class="week_num">2</span> What skill level is this program for?
                     </summary>
                     <p class="collapsed_p">Frontend Tutor was designed to take somebody from knowing nothing about
                         coding to being a highly paid full-time developer in the shortest time possible. Experienced
@@ -535,7 +614,7 @@
                 </details>
 
                 <details class="details_faq">
-                    <summary class="summary_faq"> <span class="week_num">3</span> Do I need a college degree?</summary>
+                    <summary class="summary_faq sumrtag sumrtag2"> <span class="week_num">3</span> Do I need a college degree?</summary>
                     <p class="collapsed_p">Not at all! Most students graduating from Frontend Tutor and landing
                         full-time positions paying up to $200,000 per year do not have a university degree. The entire
                         team that created and perfected the roadmap at Frontend Simplified were top tech engineers
@@ -543,13 +622,13 @@
                 </details>
 
                 <details class="details_faq">
-                    <summary class="summary_faq"> <span class="week_num">4</span> Are there any hidden fees?</summary>
+                    <summary class="summary_faq sumrtag sumrtag2"> <span class="week_num">4</span> Are there any hidden fees?</summary>
                     <p class="collapsed_p">No there're no hidden fees, you get 100% access to the program, the community
                         and the coaching calls. There's no additional fees or hidden fees</p>
                 </details>
 
                 <details class="details_faq">
-                    <summary class="summary_faq"> <span class="week_num">5</span> Is there any money-back guarantee
+                    <summary class="summary_faq sumrtag sumrtag2"> <span class="week_num">5</span> Is there any money-back guarantee
                     </summary>
                     <p class="collapsed_p">Absolutely! We know you'll love Frontend Tutor. That's why we have a program
                         with a money-back, job guarantee. If you don't land a developer job in under 12 months while
@@ -557,38 +636,48 @@
                 </details>
             </div>
     </section>
+
+
+
     </div>
     <footer class="footer">
         <div class="footer__row">
+            <div class="footer_main_one">
+                <h1 class="footer_main_title">Sign Up for useful information</h1>
+                <form class="form_footer" action="./newsletter" method="post">
+                    <input type="email" placeholder="Email..." class="footer_input_email">
+                    <button class="footer_btn">Sign Up</button>
+                </form>
+            </div>
             <div class="footer__main">
                 <div class="footer__main_one">
                     <h1 class="footer_one_title">Actions</h1>
-                    <h1 class="footer_one_sub_title"><a href="">Start Learning</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Account Login</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Join Discord</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Contact Us</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Start Learning</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Account Login</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Join Discord</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Contact Us</a></h1>
                 </div>
                 <div class="footer__main_one">
                     <h1 class="footer_one_title">Courses</h1>
-                    <h1 class="footer_one_sub_title"><a href="">HTML</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">CSS</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Javascript</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">React</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">HTML</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">CSS</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Javascript</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">React</a></h1>
                 </div>
                 <div class="footer__main_one">
                     <h1 class="footer_one_title">Polices</h1>
-                    <h1 class="footer_one_sub_title"><a href="">Terms of services</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Privacy Policy</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Job Garuntee Policy</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Earnings disclaimer</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Terms of services</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Privacy Policy</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Job Garuntee Policy</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Earnings disclaimer</a></h1>
                 </div>
 
                 <div class="footer__main_one">
-                    <h1 class="footer_one_title"><a href="">Socials</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Tiktok</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Youtube</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Instagram</a></h1>
-                    <h1 class="footer_one_sub_title"><a href="">Snapchat</a></h1>
+                    <h1 class="footer_one_title">Socials</h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Tiktok</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Youtube</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Instagram</a></h1>
+                    <h1 class="footer_one_sub_title"><a href="" class="footer_link">Snapchat</a></h1>
                 </div>
             </div>
             <div class="footerend"></div>
@@ -596,6 +685,7 @@
         </div>
     </footer>
     <script>
+        
         var allDetailsElements = document.querySelectorAll('details');
 
         allDetailsElements.forEach((details) => {
@@ -654,6 +744,23 @@
         }
 
 
+    window.addEventListener("scroll", function() {
+      var sectionThree = document.querySelector(".section__three");
+      var sectionFour = document.querySelector(".section__four");
+      var sectionThreeOffset = sectionThree.offsetTop;
+      var sectionFourOffset = sectionFour.offsetTop;
+      var scrollPosition = window.scrollY || window.pageYOffset;
+
+      if (scrollPosition > sectionFourOffset) {
+        document.body.style.backgroundColor = "white";
+        
+      } else if (scrollPosition > sectionThreeOffset) {
+        document.body.style.backgroundColor = "#f4f8ff"; /* Set background color to blue */
+      } else {
+        document.body.style.backgroundColor = "white"; /* Set background color back to white */
+      }
+    });
+    
     </script>
 
 </body>

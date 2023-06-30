@@ -146,7 +146,8 @@
 
                 </div>
             </div>
-            {%if user.is_paying == 0%}
+            {%if user.is_paying == 0 %}
+            {%if user.plan_type != price_1NDyGfFabksylCi8V0RsGRMH%}
             <div class="section__one_info_cont" id="subscription-panel">
                 <div class="left_side">
                     <h1 class="section__one_title_text">Subscription Plan</h1>
@@ -157,6 +158,7 @@
                         pro</button>
                 </div>
             </div>
+            {%endif%}
             {% endif %}
             <div class="section__one_info_cont">
                 <div class="left_side">
