@@ -68,6 +68,3 @@ def create_checkout_sessionadvanced():
         return jsonify({'error': 'User not found'})
 
 
-@app.route('/cancel')
-def cancel():
-    return render_template('cancel.html')
