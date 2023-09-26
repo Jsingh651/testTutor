@@ -45,6 +45,7 @@ def redirectroute():
     logged_in = 'user_id' in session
     first_name = None
     id = None
+    is_paying = None
     user = None
     if logged_in:
         user_id = session['user_id']
