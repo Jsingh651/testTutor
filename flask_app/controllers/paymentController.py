@@ -21,9 +21,9 @@ def create_checkout_session():
                 },
             ],
             mode='subscription',
-            success_url='http://frontendtutor.com' + \
+            success_url='http://frontendtutor.com/' + \
             user_id,  # Pass user ID as a query parameter
-            cancel_url='http://frontendtutor.com',
+            cancel_url='http://frontendtutor.com/',
             customer=user.stripe_customer_id,
             metadata = {
                         'selected_product': 'premium38'
@@ -54,9 +54,9 @@ def create_checkout_sessionadvanced():
                 },
             ],
             mode='subscription',
-            success_url='http://frontendtutor.com' +
+            success_url='http://frontendtutor.com/' +
             user_id,
-            cancel_url='http:frontendtutor.com',
+            cancel_url='http:frontendtutor.com/',
             customer=user.stripe_customer_id,
             metadata = {
                         'selected_product': 'premium70'
