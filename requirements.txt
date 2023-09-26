@@ -16,3 +16,28 @@ requests==2.31.0 ; python_version >= '3.0'
 stripe==5.4.0
 urllib3==2.0.2 ; python_version >= '3.7'
 werkzeug==2.3.4 ; python_version >= '3.8'
+
+
+
+[Unit]
+Description=Gunicorn instance
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/FrontendTutor
+Environment="PATH=/home/ubuntu/FrontendTutor/venv/bin"
+ExecStart=/home/ubuntu/FrontendTutor/venv/bin/gunicorn --workers 3 --bind unix:FrontendTutor.sock -m 007 wsgi:application
+[Install]
+WantedBy=multi-user.target
+
+server {
+    listen 80;
+    server_name 52.53.203.228;
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/FrontendTutor/FrontendTutor.sock;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/FrontendTutor /etc/nginx/sites-enabled
