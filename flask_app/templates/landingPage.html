@@ -73,13 +73,16 @@
                     </div>
 
                     <div class="divider">
-                        {% if session['user_id'] != Null %}
+                        {% if session['user_id'] != None %}
                         <button class="section__one_button" onclick="redirectToRegister()">Continue</button>
-                        <!-- <a href="" class="section__one_disclaimer">(No credit card required)</a> -->
-                        {% else %}
+                    {% elif 'user_id' in session and is_paying == false %}
+                        <button class="section__one_button" onclick="redirectToPro()">Get started</button>
+                        <a href="" class="section__one_disclaimer">(No credit card required)</a>
+                    {% else %}
                         <button class="section__one_button" onclick="redirectToRegister()">Get started</button>
                         <a href="" class="section__one_disclaimer">(No credit card required)</a>
-                        {% endif %}
+                    {% endif %}
+                    
 
                     </div>
 

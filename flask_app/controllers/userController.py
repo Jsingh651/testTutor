@@ -52,7 +52,8 @@ def redirectroute():
         if user:
             first_name = user.first_name[0].upper()
             id = user.id
-    return render_template("landingPage.html", logged_in=logged_in, first_name=first_name, id=id, user=user)
+            is_paying = user.is_paying
+    return render_template("landingPage.html", logged_in=logged_in, first_name=first_name, id=id, user=user, is_paying = is_paying)
 
 
 # PROFILE PAGE
