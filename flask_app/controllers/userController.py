@@ -10,7 +10,9 @@ from flask_app.models.users import User
 from itsdangerous import URLSafeTimedSerializer
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
-from flask import Flask, jsonify, request, flash, url_for, redirect, session, render_template, Markup, request
+from flask import Flask, jsonify, request, flash, url_for, redirect, session, render_template, request
+from markupsafe import Markup
+
 stripe.api_key = "sk_test_51NDup2FabksylCi8SFvbhtLIVxxBS1gZ3MUvH1lq9sKc8tjJgllKghz1gPVsm6rybRXsQ3kVdoIssPDdaDFii2AK00NH08t73i"
 endpoint_secret = "whsec_Y45JYq90PtTMH3FPwVLcfE4v9xrK0vvo"
 from datetime import datetime, timedelta
@@ -24,6 +26,11 @@ bcrypt = Bcrypt(app)
 @app.template_filter()
 def urlencode(value):
     return Markup(quote(value))
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return jsonify({"status": 404, "message": "Not Found"}), 404
 
 
 # LOGIN PAGE
