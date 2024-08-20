@@ -3,7 +3,7 @@ from flask_app.controllers import userController, videoController, paymentContro
 from flask import Flask
 
 if __name__ == '__main__':
-    app.run(debug = True, port = 4241)
+    app.run(debug = True, port = 4242)
 
 # sudo systemctl daemon-reload
 

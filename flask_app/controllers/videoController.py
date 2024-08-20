@@ -7,4 +7,5 @@ from flask_app.models.videos import Video
 
 @app.route('/showvid')
 def showVid():
-    return render_template('showvid.html', vi
+    return render_template('showvid.html', videos=Video.get_all())
+
