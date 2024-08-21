@@ -313,4 +313,10 @@ def webhook():
 def customer_portal():
     # Authenticate your user.
     stripe_customer_id = request.form['stripe_customer_id']
-    session = stripe.billing_portal.Session.c
+    session = stripe.billing_portal.Session.create(
+        customer=stripe_customer_id,
+        return_url='http://www.frontendtutor.com',
+    )
+    return redirect(session.url)
+
+
