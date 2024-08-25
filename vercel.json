@@ -11,9 +11,5 @@
           "src": "/(.*)",
           "dest": "server.py"
       }
-  ],
-  "env": {
-      "MAIL_USERNAME": "@jangsing02@gmail.com",
-      "MAIL_PASSWORD": "@cyhebbsqvohzqdjo"
-  }
+  ]
 }
